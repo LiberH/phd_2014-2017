@@ -1,0 +1,99 @@
+\section{Travaux connexes}
+\label{sec:related-work}
+
+  % Limitation de la de reconstruction de CFG compiler-aware et
+  % annotation-based.
+
+  Certaine méthodes de reconstruction de CFG s'appuient sur une connaissance des
+  mécanismes internes des compilateurs. D'une part, cette connaissance n'est
+  permise que par un travail fastidieux d'analyse des compilateurs. D'autre
+  part, les mécanismes internes des compilateurs ne sont pas toujours librement
+  accessibles. D'autres méthodes produisent des CFG imprécis qui doivent être
+  annotés par la suite, notamment le nombre d'itérations maximal par boucle. De
+  la même façon, ces méthodes dépendent d'un travail fastidieux, non sûr et non
+  précis d'annotations.
+
+  % FLP15: "Insight: An Open Binary Analysis Framework".
+
+  L'outil \textsc{INSIGHT}, par exemple, n'est pas sujet à ces limitations
+  \cite{FLP15}. Dans un permier temps le binaire est transposé dans une
+  représentation intermédiaire sur laquelle est réalisée une analyse
+  statique. Cette analyse est réalisée par une exécution symbolique de la
+  représentation abstraite dans un domaine abstrait où chaque variable est
+  substituée par une formule représentant toutes les valeurs possibles que
+  celle-ci peut prendre. Pour ce faire, cet outil se base sur un solveur SMT.
+
+  % The00: "Extracting Safe and Precise Control Flow from Binaries".
+
+  Une autre approche, ascendante, classifie chaque instruction complètement et
+  correctement avant de réaliser une analyse. Cette approche définit un CFG
+  interprocédural (ICFG) en tant que la conjonction d'un graphe d'appel (CG) et
+  de CFG, un par fonction. L'ICFG approximé est construit en deux étapes : un
+  ICFG conservatif est construit, une analyse statique à base de propagation de
+  constantes est réalisée pour raffiner l'ICFG précédent \cite{The00}.
+
+  % Une approche similaire
+  % CB13: "Timing Analysis of Binary Programs with UPPAAL".
+
+  Enfin, une dernière méthode \cite{CB13} permet la génération d'un modèle
+  logiciel basé sur la reconstruction automatique de CFG à partir de l'analyse
+  exclusive d'un fichier binaire, cette génération est effectuée en deux
+  phases. Durant la première le graphe de flot de contrôle de l'exécutable est
+  reconstruit par \textit{program slicing} \cite{Wei81, Tip95}. Durant la
+  seconde étape il est réduit, afin de contenir l'explosion de l'espace d'état,
+  également par \textit{program slicing}. L'implémentation décrite ici s'appuie
+  sur cette méthode.
+
+  \vspace{1em}
+
+  % Program Slicing à base d'arithmétique
+  % Wei81: "Program Slicing".
+
+  Dans sa définition originale l'algorithme de \textit{program slicing} fait
+  usage d'un critère de \textit{slicing} et d'un ensemble d'équations pour
+  déterminer quelles instructions font partie d'un \textit{slice} \cite{Wei81}.
+  Une autre définition utilise une extension du concept de graphe de dépendence
+  du programme pour créer des \textit{slices} intraprocéduraux précis pour
+  les programmes structurés formés d'une seule procédure et développe le concept
+  de graphe de dépendence du système (SDG) pour produire des \textit{slices}
+  interprocéduraux précis tenant compte du contexte d'appel de chaque procédure
+  \cite{HRB90}.
+
+  Des techniques similaires ont été inventées pour fonctionner avec des
+  programmes ayant des flots de contrôle arbitraires. Pour ce faire le CDG est
+  construit à partir d'un CFG augmenté et le graphe de dépendance de données
+  correspondant à partir du CFG original \cite{BH93, CF94}.
+
+  Une méthode équivalente mais qui ne modifie pas le CFG ou le SDG a été
+  développée \cite{Agr94}. Elle s'appuie sur un arbre des postdominants, créé en
+  parallèle de la construction du SDG, ainsi qu'un arbre des successeurs
+  lexicaux pour déterminer quel saut ajouter au \textit{slice} final.
+  
+  %% % KJL03: Interprocedural static slicing of binary executables
+
+  %% Une autre méthode défini un procédé pour construire un CFG interprocédural
+  %% \cite{KJL03}. Les algorithmes de construction des CFG, CDG, DDG et PDG y sont
+  %% modifiés ou étendus pour tenir compte des spécificités des fichiers
+  %% exécutables. Des analyses de dépendance de contrôle et de dépendance données
+  %% sont réalisées pour chaque fonction du CFG. Un CDG et un DDG sont construits
+  %% suite à ces analyses ainsi qu'un PDG grâce aux CDGs et DDGs. Des
+  %% \textit{slices} intraproceduraux peuvent être calculés en utilisant le PDG
+  %% ainsi que des \textit{slices} interproceduraux en incorporant le PDG au
+  %% SDG.
+  
+  \vspace{1em}
+
+  % Limitation des approches basées sur l'Abstract Interpretation et l'Integer
+  % Linear Programming pour l'analyse temporielle.
+
+  Quant à l'analyse temporelle en elle-même, différentes approches
+  existent. Certaines se basent par exemple sur la prédiction des comportements
+  matériels par interprétation abstraite et sur l'enumération implicite des
+  chemins par optimisation linéaire en nombres entiers \cite{HF04}. Cependant,
+  ces techniques définissent des algorithmes \textit{ad hoc} pour tenir compte
+  des spécificités des architectures pour lesquelles l'analyse temporelle se
+  porte. Un changement d'architecture implique alors l'écriture d'un nouvel
+  algorithme. De plus les résultats actuellement obtenus avec ces méthodes
+  surestiment significativement les bornes supérieures des temps d'exécutions
+  réel. Cela peut s'expliquer par le fait que les modèles des comportements des
+  équipements matériels qui y sont manipulés sont très abstraits.

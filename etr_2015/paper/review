@@ -1,0 +1,120 @@
+Bonsoir,
+
+Au nom du comité de la session doctorant de l'ETR 2015, je vous informe
+que votre contribution a été ACCEPTEE pour présentation lors de la
+session doctorant de l'Ecole d'été Temps-Réel 2015.
+Vous trouverez à la fin de cet e-mail (et éventuellement en
+pièce-jointe) les reviews concernant votre contribution.
+Je vous serais très reconnaissant d'apporter à votre contribution toutes
+les corrections/suggestions proposées. La version finale, respectant le
+format IEEE et n'excédant pas 4 pages, devra m'être transmise en PDF au
+plus tard le 26 JUIN 2015.
+
+Je vous transmettrai à cette date des informations complémentaires
+concernant la présentation orale et le poster à réaliser pour la session
+doctorant de l'Ecole d'été Temps-Réel 2015.
+Je vous rappelle également que la date limite pour les inscriptions à
+tarif réduit à l'Ecole d'été Temps-Réel 2015 est fixée au 29 juin 2015
+(http://etr2015.irisa.fr/index.php/inscriptions).
+
+Si vous avez des questions, n'hésitez pas à me contacter,
+
+Cordialement,
+Guillaume Phavorin
+
+********************
+----------------------------------------
+ETR2015 - Reviews pour la soumission #13
+----------------------------------------
+
+Titre : Reconstruction et slicing de graphes de flot de contrôle à
+partir de fichiers exécutables pour l'analyse temporelle par
+vérification de modèles
+Premier auteur : Armel MANGEAN
+
+-----------
+Reviewer #1
+-----------
+Cette soumission représente une contribution intéressante dans le cadre
+de l'Ecole Temps-Réel.
+Quelques corrections, principalement de forme, seraient cependant à
+apporter.
+Certains termes (comme use-definition, PDT) gagneraient à être explicités.
+Il serait également préférable d'uniformiser les accords des acronymes
+(soit des CFG pour tout le document, soit des CFGs).
+La figure 4 ne semble pas référencée dans le texte.
+- Résumé : "l'ensemble des exécutions possibles d'un système 
+respectent..." -"l'ensemble ... respecte..."
+- I,§2 : "peuvent être traversé" -"peuvent être traversés"
+- I,§4 : "la déscription" -"la description"
+- II,§4 : "pour rafiner" -"pour raffiner"
+- III,A,b,§3 : "le noeuds de départ" -"le noeud de départ"
+- IV,§3 : "le graphe de dépendence" -"le graphe de dépendance"
+- IV,§4 : "créé en paralèlle" -"créé en parallèle"
+- IV,§5 : la 1ère phrase "Une analyse statique intraprocédurale..."
+n'est pas correcte (il semble manquer des mots)
+- IV,§7 : "Une analyse de dépendance de contrôle et de données sont 
+réalisées" -"Des analyses de dépendance ... sont réalisées" ou "Une 
+analyse ... est réalisée"
+- légende de la figure 4 : "de éduction" -"de déduction" ?
+
+-----------
+Reviewer #2
+-----------
+Le papier expose une une approche par construction de graphes de flot de controle (CFG)
+pour l'analyse temporelle de programmes destinées à une implentation sur systèmes temps
+réels. Un mécanisme de construction de CFG à partir d'un fichier executable, puis un
+mécanisme de compactage (slicing) sont explicités.
+
+* Le problème principal du papier est que la **contribution** n'est pas assez mise en avant:
+quels sont les outils existants utilisés, quelle est l'architecture logicielle proposée.
+(une figure serait la bienvenue) ?
+Qu'est ce qui a déjà été réalisé. Par exemple, en III.B, la phrase
+"Le détail de la reconstruction détaillée ici" est ambigüe: s'agit t il d'une approche
+développée par les auteurs, ou est ce une technique prososée par d'autres et qui sera
+réutilisée dans vos futurs travaux ? On peut supposer que III et IV sont vos travaux, mais
+ce n'est pas sûr, même si vous mentionnez une implémentation dans le résumé et la conclusion.
+
+* il y a pas mal de typos, notamment accord de participes passés et pluriels ou masc./feminin.
+typo: accessiblilité temporisée
+typo: description sans é
+typo: espace d'états [4].
+typo: être traversés
+
+* commentaires par section:
+
+I-Intro:
+définir la notion de distance ?
+
+figure 1: un exemple un peu plus explicite est il possible ?
+
+Vocabulaire parfois inadéquat à mon sens. exemples:
+- des techniques utilisent, se basent sur des algorithmes (attention au vocabulaire!)
+- calculs se portent ??? se font ?
+- CFG: tous les chemins du CFG représentent toutes les executions possibles.
+
+
+Les travaux connexes pourraient mis juste avant la conclusion: on peut alors s'appuyer sur les
+définitions de la section III.A actuelle pour décrire les autres travaux. Il serait aussi
+intéressant de donner quelques ordres de grandeur.
+
+
+II-related work
+peut etre à deplacer apres IV.
+Difference entre la methode [3] et la votre ?
+
+
+III-CFG
+a) b) dans III et  c) et d) dans le IV ???
+
+La reconstruction, pour les sauts indirects, doit sans doute correspondre à la fermeture transitive du CFG, non ?
+
+
+IV-Slicing
+Donner la definition du slicing dans ce contexte et son but.
+Biblio du slicing très développée dans cette partie. Elle aurait pu compléter ou se substituer en partie au II.
+Preciser et détailler votre apport dans cette partie (analyse statique et utilisation de Harmless, c'est cela ?)
+
+
+V-Conclusion
+manque les travaux futurs.

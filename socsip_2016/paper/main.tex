@@ -1,0 +1,44 @@
+%\documentstyle[times,art10,twocolumn,latex8]{article}
+
+\documentclass[10pt,twocolumn]{article} 
+\usepackage{latex8}
+\usepackage{times}
+\usepackage{amsmath,amsfonts,mathrsfs,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{xspace}
+
+
+%------------------------------------------------------------------------- 
+% take the % away on next line to produce the final camera-ready version 
+\pagestyle{empty}
+
+%------------------------------------------------------------------------- 
+
+\title{%
+    Abstraction de codes binaires \\pour le calcul de borne sur leur pire temps d'exécution}
+
+\author{%
+     Armel Mangean, Jean-Luc Béchennec, Sébastien Faucou
+  \\   UMR 6597 IRCCyN -- CNRS, École Centrale de Nantes et Université de Nantes
+  \\ prenom.nom@irccyn.ec-nantes.fr}
+
+\begin{document}
+
+  \maketitle
+  \thispagestyle{empty}
+
+  \input{abstract}
+  \input{introduction}   % OK
+  \input{reconstruction} % OK
+  \input{slicing}        % OK
+  \input{implementation} % 
+  \input{conclusion}     % OK
+  
+  \bibliographystyle{latex8}
+  \bibliography{refs}
+
+\end{document}

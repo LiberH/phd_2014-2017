@@ -1,0 +1,24 @@
+\begin{abstract}
+  L'analyse temporelle des systèmes embarqués temps-réel est nécessaire pour
+  garantir le respect de l'ensemble de leurs contraintes temporelles. Une telle
+  analyse doit déterminer si l'ensemble des exécutions possibles d'un système
+  respecte l'ensemble des ses contraintes temporelles. Les différentes analyses
+  temporelles existantes s'appuient sur un modèle du programme et un modèle de
+  la plateforme matérielle.
+  
+  Cet article décrit l'implémentation d'un outil de génération de modèles de
+  programmes pour l'analyse temporelle par vérification de modèles temporisés.
+  La génération de tels modèles de programmes se structure en deux étapes.
+  D'abord, le graphe de flots de contrôle du programme est reconstruit sous
+  forme d'un automate fini à partir d'un fichier binaire éxécutable. Ensuite, ce
+  modèle est spécialisé \emph{via} \emph{program slicing} pour pouvoir en
+  réaliser une analyse temporelle efficace.
+\end{abstract}
+
+\begin{keywords}
+  temps-réel, analyse temporelle, vérification de modèles, espace d'état, program slicing.
+\end{keywords}
+
+\begin{collaborations}
+  Projet FUI FREENIVI
+\end{collaborations}

@@ -1,0 +1,14 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+  This article describes the working principles of a tool that computes abstract
+  models of binary executables to be processed by a WCET estimation toolchain
+  based on model checking. Our tool uses program slicing to compute the set of
+  memory locations of the program that have an impact on the WCET of the
+  program. The content of these memory locations is tracked in the abstract
+  model of the program whereas the content of the other ones is abstracted away.
+  A first prototype has been implemented and evaluated. The evaluation has been
+  performed on the Mälardalen benchmarks using two compilers for the PowerPC
+  architecture with varying optimization levels. On average, $41\%$ of the
+  registers can be abstracted. This is a promising result.
+

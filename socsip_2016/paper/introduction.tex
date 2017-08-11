@@ -1,0 +1,41 @@
+\renewcommand{\baselinestretch}{1.2}
+\section{Introduction}
+\label{sec:introduction}
+
+  % Nécessité de l'analyse temporelle pour le temps-reél.
+  L'analyse temporelle d'un systèmes temps réel doit déterminer si l'ensemble
+  des exécutions possibles de ce système respecte les  contraintes temporelles
+  exprimées dans sa spécification.  Pour réaliser cette analyse, il faut
+  connaître les pires temps d'exécution des tâches qui composent le logiciel du
+  système. Ces valeurs sont généralement impossibles à calculer mais il est en
+  revanche possible d'en calculer des bornes supérieures.
+  Parmi les différentes techniques développées pour cela, nous
+  nous intéressons à celles basées sur la théorie de la vérification des
+  systèmes temporisés~\cite{DOT10, CB13}. La borne y est
+  déterminée en cherchant le plus long chemin dans un modèle obtenu par
+  composition d'un modèle du code binaire de la tâche et d'un ensemble de
+  modèles des composants de l'architecture matérielle (processeur, pipeline,
+  mémoires caches, bus, etc.). Comparées aux autres approches, ces
+  techniques permettent une modélisation moins abstraite des comportements
+  matériels, ce qui permet d'obtenir des bornes plus
+  précises. En revanche, leur application reste limitée par l'explosion
+  de la taille l'espace d'état du modèle à analyser~\cite{Wil04}.
+
+  Dans la continuité de~\cite{CB13}, nos travaux visent à
+  contribuer au contrôle de la taille de l'espace d'état en réalisant une
+  abstraction du code binaire. Cette abstraction consiste à limiter
+  l'état du modèle aux valeurs des registres et mots mémoire qui ont un
+  impact sur le flot de contrôle. Le calcul de cette abstraction se fait en
+  deux étapes. D'abord, le graphe de flots de contrôle du programme est
+  reconstruit. Ensuite, ce graphe est analysé \emph{via} un \emph{program slicing}
+  pour calculer le sous-ensemble des registres et mots mémoires pertinents.
+  Dans la suite, nous nous concentrons sur cette seconde étape.
+
+  %Notre outil est implémenté en C++ et utilise la bibliothèque de manipulation
+  %de graphe LEMON \cite{DJK11}.  Les sections \ref{sec:reconstruction} et
+  %\ref{sec:slicing} détaillent les aspects théoriques de notre outil. La
+  %section \ref{sec:implementation} détaille l'implémentation de notre outil.
+  %Enfin, la section \ref{sec:conclusion} présente les perspectives de ce
+  %travail.
+
+

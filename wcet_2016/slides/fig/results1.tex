@@ -1,0 +1,101 @@
+\begin{tabular}{ |l| |c|c|c|c| |c|c| }
+  \hline
+  \multirow{2}{*}{Source file}
+  & \multicolumn{4}{c||}{\textsc{Gcc}}
+  & \multicolumn{2}{c|}{\textsc{Cosmic C}}
+
+  \\\cline{2-7}
+  & \multicolumn{1}{c|}{\texttt{-O0}} & \multicolumn{1}{c|}{\texttt{-O1}} & \multicolumn{1}{c|}{\texttt{-O2}} & \multicolumn{1}{c||}{\texttt{-O3}}
+  & \multicolumn{1}{c|}{\texttt{-no}} & \multicolumn{1}{c|}{\emph{default}}
+
+  \\\hline\hline
+  \verb|adpcm.c|
+  & $1858/224$, $88\%$ & $966/357$, $63\%$ & $1094/421$, $62\%$ & $1775/348$, $80\%$
+&               $1282/398$,                $69\%$ &               $1064/338$,                $68\%$
+  
+  \\\hline
+  \verb|bs.c|
+  & \hspace{1em}$   82/27$,\hspace{.5em}$67\%$ & \hspace{.5em}$  38/19$,\hspace{.5em}$50\%$ & \hspace{1em}$   28/18$,\hspace{.5em}$36\%$ & \hspace{1em}$   28/18$,\hspace{.5em}$36\%$
+& \hspace{1em}$54/28$,    \hspace{.5em}$48\%$ & \hspace{1em}$35/18$,     \hspace{.5em}$49\%$
+
+  \\\hline
+  \verb|bsort100.c|
+  & \hspace{.5em}$  141/39$,\hspace{.5em}$72\%$ & \hspace{.5em}$  65/24$,\hspace{.5em}$63\%$ & \hspace{1em}$   58/18$,\hspace{.5em}$69\%$ & \hspace{1em}$   58/18$,\hspace{.5em}$69\%$
+& \hspace{1em}$74/34$,    \hspace{.5em}$54\%$ & \hspace{1em}$66/34$,     \hspace{.5em}$48\%$
+
+  \\\hline
+  \verb|cnt.c|
+  & \hspace{.5em}$  193/44$,\hspace{.5em}$77\%$ & $ 104/38$,\hspace{.5em}$63\%$ & \hspace{1em}$   87/24$,\hspace{.5em}$72\%$ & $ 1124/81$,\hspace{.5em}$93\%$
+& \hspace{.5em}$128/25$,    \hspace{.5em}$80\%$ & \hspace{.5em}$112/23$,    \hspace{.5em}$79\%$
+
+  \\\hline
+  \verb|compress.c|
+  & \hspace{.5em}$ 725/271$, $63\%$ & $529/214$, $60\%$ & \hspace{.5em}$ 530/247$, $53\%$ & \hspace{.5em}$ 752/316$, $58\%$
+& \hspace{.5em}$591/253$,                 $57\%$ & \hspace{.5em}$501/228$,                 $54\%$
+
+  \\\hline
+  \verb|crc.c|
+  & \hspace{.5em}$  295/44$,\hspace{.5em}$85\%$ & $ 162/50$,\hspace{.5em}$69\%$ & \hspace{.5em}$  141/47$,\hspace{.5em}$67\%$ & \hspace{.5em}$  210/98$,\hspace{.5em}$53\%$
+& \hspace{.5em}$186/112$,                 $40\%$ & \hspace{.5em}$148/81$,    \hspace{.5em}$45\%$
+
+  \\\hline
+  \verb|expint.c|
+  & \hspace{.5em}$  187/33$,\hspace{.5em}$82\%$ & $ 135/50$,\hspace{.5em}$63\%$ & \hspace{1em}$    27/5$,\hspace{1em}$81\%$ & \hspace{1em}$    27/5$,\hspace{1em}$81\%$
+& \hspace{.5em}$115/48$,    \hspace{.5em}$58\%$ & \hspace{1em}$93/40$,     \hspace{.5em}$57\%$
+
+  \\\hline
+  \verb|fdct.c|
+  & \hspace{.5em}$  662/11$,\hspace{.5em}$98\%$ & $  185/6$,\hspace{1em}$97\%$ & \hspace{.5em}$   205/6$,\hspace{1em}$97\%$ & \hspace{.5em}$   692/3$,\hspace{1em}$99\%$
+& \hspace{.5em}$317/6$,     \hspace{1em}$98\%$ & \hspace{.5em}$218/6$,     \hspace{1em}$97\%$
+
+  \\\hline
+  \verb|fibcall.c|
+  & \hspace{1em}$   58/12$,\hspace{.5em}$79\%$ & \hspace{.5em}$  32/10$,\hspace{.5em}$69\%$ & \hspace{1em}$    14/3$,\hspace{1em}$79\%$ & \hspace{1em}$    14/3$,\hspace{1em}$79\%$
+& \hspace{1em}$29/8$,      \hspace{1em}$72\%$ & \hspace{1em}$21/8$,      \hspace{1em}$62\%$
+
+  \\\hline
+  \verb|fir.c|
+  & \hspace{.5em}$  137/21$,\hspace{.5em}$85\%$ & \hspace{.5em}$  79/34$,\hspace{.5em}$57\%$ & \hspace{1em}$   79/33$,\hspace{.5em}$58\%$ & \hspace{1em}$   79/33$,\hspace{.5em}$58\%$
+& \hspace{1em}$87/35$,     \hspace{.5em}$60\%$ & \hspace{1em}$74/30$,     \hspace{.5em}$59\%$
+
+  \\\hline
+  \verb|janne_complex.c|
+  & \hspace{1em}$   75/21$,\hspace{.5em}$72\%$ & \hspace{.5em}$  39/21$,\hspace{.5em}$46\%$ & \hspace{1em}$   40/29$,\hspace{.5em}$28\%$ & \hspace{1em}$   36/26$,\hspace{.5em}$28\%$
+& \hspace{1em}$41/20$,     \hspace{.5em}$51\%$ & \hspace{1em}$30/20$,     \hspace{.5em}$33\%$
+
+  \\\hline
+  \verb|jfdctint.c|
+  & \hspace{.5em}$  505/29$,\hspace{.5em}$94\%$ & $  195/9$,\hspace{1em}$95\%$ & \hspace{.5em}$   219/9$,\hspace{1em}$96\%$ & \hspace{.5em}$   795/6$,\hspace{1em}$99\%$
+& \hspace{.5em}$255/9$,     \hspace{1em}$96\%$ & \hspace{.5em}$205/9$,     \hspace{1em}$96\%$
+
+  \\\hline
+  \verb|matmult.c|
+  & \hspace{.5em}$  196/36$,\hspace{.5em}$82\%$ & $ 120/42$,\hspace{.5em}$65\%$ & \hspace{.5em}$  110/43$,\hspace{.5em}$61\%$ & \hspace{.5em}$  103/38$,\hspace{.5em}$63\%$
+& \hspace{.5em}$135/20$,    \hspace{.5em}$85\%$ & \hspace{.5em}$118/20$,    \hspace{.5em}$83\%$
+
+  \\\hline
+  \verb|ndes.c|
+  & \hspace{.5em}$ 936/162$, $83\%$ & $474/160$, $66\%$ & \hspace{.5em}$ 563/236$, $58\%$ & \hspace{.5em}$ 886/522$, $41\%$
+& \hspace{.5em}$653/118$,                 $82\%$ & \hspace{.5em}$576/112$,                 $81\%$
+
+  \\\hline
+  \verb|ns.c|
+  & \hspace{.5em}$  115/35$,\hspace{.5em}$66\%$ & \hspace{.5em}$  65/30$,\hspace{.5em}$54\%$ & \hspace{1em}$   46/27$,\hspace{.5em}$41\%$ & \hspace{.5em}$  181/88$,\hspace{.5em}$51\%$
+& \hspace{1em}$69/33$,     \hspace{.5em}$52\%$ & \hspace{1em}$54/29$,     \hspace{.5em}$46\%$
+
+  \\\hline
+  \verb|prime.c|
+  & \hspace{.5em}$  146/63$,\hspace{.5em}$57\%$ & \hspace{.5em}$  56/38$,\hspace{.5em}$32\%$ & \hspace{1em}$   48/30$,\hspace{.5em}$38\%$ & \hspace{1em}$   31/14$,\hspace{.5em}$55\%$
+& \hspace{1em}$95/46$,     \hspace{.5em}$52\%$ & \hspace{1em}$82/42$,     \hspace{.5em}$49\%$
+
+  \\\hline\hline
+  \multirow{2}{*}{Average}
+  & \multicolumn{1}{c|}{$78\%$} & \multicolumn{1}{c|}{$63\%$} & \multicolumn{1}{c|}{$62\%$} & \multicolumn{1}{c||}{$65\%$}
+  & \multicolumn{1}{c|}{$66\%$} & \multicolumn{1}{c|}{$63\%$}
+
+  \\\cline{2-7}  
+  & \multicolumn{4}{c||}{$67\%$}
+  & \multicolumn{2}{c|}{$64\%$}
+  
+  \\\hline
+\end{tabular}

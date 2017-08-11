@@ -1,0 +1,68 @@
+\documentclass[conference,a4paper]{IEEEtran}
+\bibliographystyle{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{flushend} % Equalizes columns on last page
+\usepackage{graphicx}
+
+\title{%
+  Implémentation d'un outil
+  de reconstruction de graphes de flot de contrôle
+  pour l'analyse temporelle
+  par vérification de modèles}
+
+\author{%
+  \IEEEauthorblockN{Armel Mangean}
+  \IEEEauthorblockA{%
+    Institut de Recherche en Communications et Cybernétique de Nantes\\
+    %IRCCyN UMR CNRS 6597 \\
+    École Centrale de Nantes, LUNAM Université \\
+    Nantes, France}}
+
+%% TODO
+%% simplification
+
+\begin{document}
+  \maketitle
+
+  \input{abstract}
+  %% * Résumé *
+
+  \input{introduction}
+  %% * Introduction *
+  %% ~ Pourquoi l'"analyse temporelle"
+  %%   > une nécessité pour le temps-réel (pourquoi)
+  %% ~ Pourquoi la "reconstruction de CFG"
+  %%   > une nécessité pour l'analyse temporelle (pourquoi)
+  %% ~ Pourquoi la "vérification de modèles"
+  %%   > interet de la vérification de modèles (pourquoi)
+  %%   > figure explicite de l'analyse temporelle par vérification de modèles
+  %% ~ Organisation de l'article
+
+  \input{reconstruction}
+  %% * Reconstruction *
+  %% ~ Comment la "reconstruction de CFG"
+  %%   > à partir de fichiers exécutables (pourquoi)
+  %%   > à base de graphes (comment + définir "use-definition")
+  %%   > par analyse sémantique des instructions (comment)
+
+  \input{simplification}
+  %% * simplification *
+  %% ~ Comment la "simplification de CFG"
+  %%   > par program slicing (comment et pourquoi)
+
+  \input{related-work}
+  %% * Travaux connexes *
+  %% ~ Alternative à notre "reconstruction de CFG"
+  %%   > limitations des autres approches
+  %%   > slicing à base d'arithmétique
+  %%   > approche similaire (comparaison à CB13)
+
+  \input{conclusion}
+  %% * Conclusion *
+  %% > Ajouter les perspectives
+
+  \bibliography{refs.bib}
+\end{document}

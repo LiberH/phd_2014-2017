@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Template</name>
+		<declaration>// Place local declarations here.
+int g;
+void pipeline(int i, bool b) {if (b) {g=i;}}
+void execute(int i) {g=i;}
+int _3000;
+int _3004;
+int _3008;
+int _300c;
+int _3010;
+int _3014;
+int _3018;
+int _301c;
+int _3020;
+int _3024;
+int _3028;
+int _302c;
+int _3030;
+int _3034;
+bool nz() {return true;}
+chan fetch;</declaration>
+		<location id="id0" x="0" y="144" color="#c0c0c0">
+			<name x="-221" y="136">_300c</name>
+			<label kind="comments" x="-170" y="136">b 300c</label>
+		</location>
+		<location id="id1" x="-34" y="569" color="#c0c0c0">
+			<name x="-221" y="561">_3034</name>
+			<label kind="comments" x="-170" y="561">blr</label>
+		</location>
+		<location id="id2" x="0" y="399" color="#c0c0c0">
+			<name x="-221" y="391">_3024</name>
+			<label kind="comments" x="-170" y="391">mr r9,r3</label>
+		</location>
+		<location id="id3" x="-34" y="527">
+			<name x="-221" y="518">_3030</name>
+			<label kind="comments" x="-170" y="518">bdnz 3024</label>
+		</location>
+		<location id="id4" x="-34" y="484" color="#c0c0c0">
+			<name x="-221" y="476">_302c</name>
+			<label kind="comments" x="-170" y="476">mr r10,r9</label>
+		</location>
+		<location id="id5" x="-34" y="442" color="#c0c0c0">
+			<name x="-221" y="433">_3028</name>
+			<label kind="comments" x="-170" y="433">add r3,r9,r10</label>
+		</location>
+		<location id="id6" x="-34" y="357" color="#c0c0c0">
+			<name x="-221" y="348">_3020</name>
+			<label kind="comments" x="-170" y="349">b 3028</label>
+		</location>
+		<location id="id7" x="-34" y="315" color="#c0c0c0">
+			<name x="-221" y="306">_301c</name>
+			<label kind="comments" x="-170" y="306">li r9,1</label>
+		</location>
+		<location id="id8" x="-34" y="272">
+			<name x="-221" y="263">_3018</name>
+			<label kind="comments" x="-170" y="263">mtctr r8</label>
+		</location>
+		<location id="id9" x="-34" y="230" color="#c0c0c0">
+			<name x="-221" y="221">_3014</name>
+			<label kind="comments" x="-170" y="221">li r10,0</label>
+		</location>
+		<location id="id10" x="-34" y="187">
+			<name x="-221" y="178">_3010</name>
+			<label kind="comments" x="-170" y="178">li r8,29</label>
+		</location>
+		<location id="id11" x="-34" y="102" color="#c0c0c0">
+			<name x="-221" y="93">_3008</name>
+			<label kind="comments" x="-170" y="93">bl 3010</label>
+		</location>
+		<location id="id12" x="-34" y="59" color="#c0c0c0">
+			<name x="-221" y="51">_3004</name>
+			<label kind="comments" x="-170" y="51">ori r1,r1,49296</label>
+		</location>
+		<location id="id13" x="-34" y="17" color="#c0c0c0">
+			<name x="-221" y="8">_3000</name>
+			<label kind="comments" x="-170" y="8">lis li,r1</label>
+		</location>
+		<init ref="id13"/>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id12"/>
+			<label kind="guard" x="34" y="348">true</label>
+			<label kind="synchronisation" x="76" y="8">fetch!</label>
+			<label kind="assignment" x="127" y="0">pipeline(_3000,true)</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="34" y="476">true</label>
+			<label kind="synchronisation" x="76" y="136">fetch!</label>
+			<label kind="assignment" x="127" y="127">pipeline(_300c,true)</label>
+			<nail x="-9" y="110"/>
+			<nail x="8" y="110"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="34" y="391">true</label>
+			<label kind="synchronisation" x="76" y="561">fetch!</label>
+			<label kind="assignment" x="127" y="552">pipeline(_3034,true)</label>
+			<nail x="17" y="501"/>
+			<nail x="17" y="374"/>
+			<nail x="17" y="187"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id5"/>
+			<label kind="guard" x="34" y="433">true</label>
+			<label kind="synchronisation" x="76" y="391">fetch!</label>
+			<label kind="assignment" x="127" y="382">pipeline(_3024,true)</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="guard" x="314" y="518">nz()</label>
+			<label kind="synchronisation" x="76" y="518">fetch!</label>
+			<label kind="assignment" x="399" y="510">pipeline(_3030,nz()),
+execute(_3030)</label>
+			<label kind="comments" x="289" y="518">or</label>
+			<nail x="0" y="484"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="guard" x="34" y="518">!nz()</label>
+			<label kind="synchronisation" x="348" y="518">fetch!</label>
+			<label kind="assignment" x="127" y="510">pipeline(_3030,!nz()),
+execute(_3030)</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="guard" x="34" y="561">true</label>
+			<label kind="synchronisation" x="76" y="476">fetch!</label>
+			<label kind="assignment" x="127" y="467">pipeline(_302c,true)</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="guard" x="34" y="178">true</label>
+			<label kind="synchronisation" x="76" y="433">fetch!</label>
+			<label kind="assignment" x="127" y="425">pipeline(_3028,true)</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="guard" x="34" y="136">true</label>
+			<label kind="synchronisation" x="76" y="348">fetch!</label>
+			<label kind="assignment" x="127" y="340">pipeline(_3020,true)</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="guard" x="34" y="51">true</label>
+			<label kind="synchronisation" x="76" y="306">fetch!</label>
+			<label kind="assignment" x="127" y="297">pipeline(_301c,true)</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="guard" x="34" y="93">true</label>
+			<label kind="synchronisation" x="76" y="263">fetch!</label>
+			<label kind="assignment" x="127" y="255">pipeline(_3018,true),
+execute(_3018)</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="guard" x="34" y="263">true</label>
+			<label kind="synchronisation" x="76" y="221">fetch!</label>
+			<label kind="assignment" x="127" y="212">pipeline(_3014,true)</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="guard" x="34" y="306">true</label>
+			<label kind="synchronisation" x="76" y="178">fetch!</label>
+			<label kind="assignment" x="127" y="170">pipeline(_3010,true),
+execute(_3010)</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="guard" x="34" y="221">true</label>
+			<label kind="synchronisation" x="76" y="93">fetch!</label>
+			<label kind="assignment" x="127" y="85">pipeline(_3008,true)</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="guard" x="34" y="8">true</label>
+			<label kind="synchronisation" x="76" y="51">fetch!</label>
+			<label kind="assignment" x="127" y="42">pipeline(_3004,true)</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Template();
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+	</queries>
+</nta>

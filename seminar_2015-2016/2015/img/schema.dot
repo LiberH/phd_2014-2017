@@ -1,0 +1,15 @@
+digraph Schema {
+  soft_model         [label = "Modèle logiciel",        shape = plaintext];
+  soft_model_reduced [label = "Modèle logiciel réduit", shape = plaintext];
+  hard_model         [label = "Modèle matériel",        shape = plaintext];
+  slicing            [label = "Program Slicing",        shape = rectangle];
+  model_checking     [label = "Model Checking",         shape = rectangle];
+  wcet               [label = "WCET"];
+
+  soft_model -> slicing -> soft_model_reduced;
+  
+  soft_model_reduced -> model_checking;
+  hard_model         -> model_checking;
+  
+  model_checking  -> wcet;
+}

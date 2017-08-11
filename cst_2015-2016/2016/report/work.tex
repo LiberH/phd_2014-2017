@@ -1,0 +1,95 @@
+\section{Travail réalisé}
+\label{sec:work}
+ 
+  \subsection{Constat d'echec}
+
+    Dans mon rapport de Comité de Suivi de Thèse de l'an passé j'évoque le
+    développement d'un outil de \emph{program slicing} implémenté en
+    \textsc{Haskell}~\cite{Mar10}. À cette époque, seule la reconstruction de
+    graphe de flots de contrôle (CFG) à partir de fichiers binaires exécutables
+    est fonctionnelle. Celle-ci est réalisée grâce à l'analyse sémantique et
+    syntaxique de fichiers binaires exécutables permise par l'outil
+    \textsc{Harmless}~\cite{KBB12}. Les CFG peuvent être exportés pour
+    vérification sous forme d'automates temporisés au format
+    \textsc{Uppaal}~\cite{LPY97} et pour visualisation au format \textsc{Dot}.
+
+    Nous pensons alors que l'approche de \emph{program slicing} basée sur les
+    équations de flot de données est en mesure de repondre à notre
+    problèmatique. Un langage de programmation fonctionnel est donc parfaitement
+    indiqué. Le langage \textsc{Haskell} est choisi au profit du langague
+    \textsc{OCaml} pour diverses raisons peu pertinentes. Le langage de
+    programmation \textsc{Haskell} est un langage issu du paradigme de
+    programmation dit fonctionel. J'ai eu l'occasion de m'initier à un autre
+    langage issu de ce paradigme durant ma scolarité : le langage
+    \textsc{OCaml}. Cependant, je n'avais jamais manipulé le concept de haut
+    niveau de \og monade \fg~qui est au c\oe{}ur du langage \textsc{Haskell}.
+    
+    \medskip
+    
+    Il s'est finalement avéré que la seule approche appropriée à nos besoins
+    (\emph{slicing} inter-procédural de fichiers binaires) est basée sur la
+    manipulation de divers graphes. Si la construction et l'exploration de
+    graphes sont aisées avec les langages de programmation fonctionnel, en
+    réaliser des manipulations relativement complexes ne l'est pas.
+
+    De fait, l'implémentation des algorithmes de \emph{program slicing} est
+    entreprise grâce à une bibliothèque de manipulation de graphes de flot de
+    contrôle relativement complexe nommée \textsc{Hoopl}~\cite{RDP10}. Cette
+    bibliothèque est developpée pour le compilateur \textsc{Haskell}
+    \textsc{GHC} par les chercheurs à l'orignie du langage
+    \textsc{Haskell}. \textsc{Hoopl} fait un usage explicite et extensif du
+    concept de monade notamment à travers des compositions de monades.
+    
+    Il apparait que pour pouvoir poursuivre l'implémentation avec cette
+    bibliothèque il m'est nécessaire de maîtriser le langage
+    \textsc{Haskell}. Ce n'est alors pas le cas et je ne dispose pas du temps
+    nécessaire pour que cela le devienne. Face à ce problème, nous décidons
+    d'entreprendre une réimplémentation de l'outil dans un langage de
+    programmation dont je maîtrise mieux le paradigme.
+
+  \subsection{Réimplémentation}
+
+    La nouvelle implémentation est réalisée en langage \textsc{C++}. En effet,
+    je maîtrise le langage \textsc{C}, très proche du \textsc{C++}, ce dernier
+    apportant des aspects orientés objets. Nous utilisons la bibliothèque de
+    manipulation de graphes \textsc{Lemon}~\cite{DJK11}.
+
+    Après une intégration rapide des spécificités du langage \textsc{C++}
+    notamment l'instantiation de \emph{templates} dont fait usage
+    \textsc{Lemon}, la réimplémentation de l'existant est plutôt
+    rapide. L'implémentation des algorithmes spécifiques du \emph{program
+      slicing} prend un peu plus de temps. Il me faut avoir une bonne maîtrise
+    des différents algorithmes, ceux-ci étant relativement complexes à
+    appréhender et à implémenter.
+
+    \medskip
+    
+    Nous disposon aujourd'hui d'une implémentation fonctionnelle dont nous avons
+    pu tirer les premiers résultats. Nous avons utilisé les \emph{benchmarks} de
+    Mälardalen~\cite{GBA10}. Ces résultats sont disponibles dans l'article
+    sousmis au \emph{workshop} WCET 2016, voir la
+    sous-section~\ref{subsec:sciprod}. Nous avons également réalisé le
+    \emph{program slicing} de différents services du système d'exploitation
+    temps-réel \textsc{Trampoline}. Ces résultats apportant une nouvelle
+    dimension à note outil ne sont pas encore publiés.
+      
+  \subsection{Productions scientifiques}
+    \label{subsec:sciprod}
+
+    J'ai participé à la Journée des Doctorants (JDoc) 2016 organiséz par l'École
+    Doctorale Sciences et Technologies de l'Information et Mathématiques
+    (EDSTIM), voir section~\ref{sec:other}. Cette journée a pour but de faire
+    découvrir aux doctorants de deuxième année les enjeux et l'état de l'art
+    d'autres domaines que les leurs. À cette occasion, j'ai produit un article
+    ainsi qu'un poster.
+
+    J'ai également produit un poster suite à l'acceptation d'un \emph{abstract}
+    à l'édition 2016 du colloque du groupement de recherche System-On-Chip --
+    System-In-Package (SoC -- SiP).
+    
+    Je suis co-auteur d'un article sousmis à la seizième édition de
+    l'\emph{International Workshop on Worst-Case Execution Time Analysis}. Cet
+    article a été co-écrit avec mes encadrants (Jean-Luc Béchennec et Sébastien
+    Faucou) ainsi que Mikaël Briday, enseignant-chercheur de notre équipe et
+    résponsable du développement de \textsc{Harmless}. Cet article est fourni
+    en annexe à ce rapport, cf. annexe~\ref{sec:wcet16}.

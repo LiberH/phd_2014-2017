@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ActiveLayerIndex</key>
+	<integer>0</integer>
+	<key>ApplicationVersion</key>
+	<array>
+		<string>com.omnigroup.OmniGrafflePro</string>
+		<string>139.18.0.187838</string>
+	</array>
+	<key>AutoAdjust</key>
+	<true/>
+	<key>BackgroundGraphic</key>
+	<dict>
+		<key>Bounds</key>
+		<string>{{0, 0}, {558.99997329711914, 783}}</string>
+		<key>Class</key>
+		<string>SolidGraphic</string>
+		<key>ID</key>
+		<integer>2</integer>
+		<key>Style</key>
+		<dict>
+			<key>shadow</key>
+			<dict>
+				<key>Draws</key>
+				<string>NO</string>
+			</dict>
+			<key>stroke</key>
+			<dict>
+				<key>Draws</key>
+				<string>NO</string>
+			</dict>
+		</dict>
+	</dict>
+	<key>BaseZoom</key>
+	<integer>0</integer>
+	<key>CanvasOrigin</key>
+	<string>{0, 0}</string>
+	<key>ColumnAlign</key>
+	<integer>1</integer>
+	<key>ColumnSpacing</key>
+	<real>36</real>
+	<key>CreationDate</key>
+	<string>2016-05-17 14:21:59 +0000</string>
+	<key>Creator</key>
+	<string>briday-m</string>
+	<key>DisplayScale</key>
+	<string>1.000 cm = 1.000 cm</string>
+	<key>GraphDocumentVersion</key>
+	<integer>8</integer>
+	<key>GraphicsList</key>
+	<array>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>ControlPoints</key>
+			<array>
+				<string>{4.2495906340440115, -6.3743859510660172}</string>
+				<string>{-0.49999922175751976, 7.0000017299371962}</string>
+				<string>{0.5, -7}</string>
+				<string>{4.2495903406393722, 6.3743855109590868}</string>
+			</array>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>6</integer>
+			</dict>
+			<key>ID</key>
+			<integer>65</integer>
+			<key>Points</key>
+			<array>
+				<string>{147.69297360556223, 323.22303361558011}</string>
+				<string>{154, 306}</string>
+				<string>{147.52278574753151, 287.81397536806924}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>Bezier</key>
+					<true/>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>LineType</key>
+					<integer>1</integer>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>9</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>ControlPoints</key>
+			<array>
+				<string>{-4.2902708195097148, 6.5247868713377102}</string>
+				<string>{-9.0547477071822868e-06, -8.4999999999951683}</string>
+				<string>{0, 8.5}</string>
+				<string>{-4.2081315992784596, -6.2245279905993698}</string>
+			</array>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>9</integer>
+			</dict>
+			<key>ID</key>
+			<integer>64</integer>
+			<key>Points</key>
+			<array>
+				<string>{133.92597630621052, 287.69034664117294}</string>
+				<string>{127, 305.5}</string>
+				<string>{133.92597599138739, 323.30965254928185}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>Bezier</key>
+					<true/>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>LineType</key>
+					<integer>1</integer>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>6</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>ControlPoints</key>
+			<array>
+				<string>{4.0494670486683049, -1.2148401146005199}</string>
+				<string>{-10.5, 0}</string>
+				<string>{10.499997138975573, 5.5926367394931731e-06}</string>
+				<string>{10.5, -0.5}</string>
+				<string>{-10.500002813443302, 0.50000148682727286}</string>
+				<string>{5.0133398055601788, 1.171949564936142}</string>
+			</array>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>5</integer>
+			</dict>
+			<key>ID</key>
+			<integer>62</integer>
+			<key>Points</key>
+			<array>
+				<string>{337.85416384481391, 265.1628793009429}</string>
+				<string>{352.5, 262.5}</string>
+				<string>{351.5, 276}</string>
+				<string>{337.91097194523621, 273.64456847050764}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>Bezier</key>
+					<true/>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>LineType</key>
+					<integer>1</integer>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>5</integer>
+			</dict>
+			<key>ID</key>
+			<integer>61</integer>
+			<key>Points</key>
+			<array>
+				<string>{252.00001198555259, 269.49998325618651}</string>
+				<string>{289.49998801443428, 269.49998325618651}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>8</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>8</integer>
+			</dict>
+			<key>ID</key>
+			<integer>60</integer>
+			<key>Points</key>
+			<array>
+				<string>{165.50001198555762, 269.50000838043195}</string>
+				<string>{202.99998801444329, 269.50000838043195}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>6</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>6</integer>
+			</dict>
+			<key>ID</key>
+			<integer>59</integer>
+			<key>Points</key>
+			<array>
+				<string>{141.00001242107902, 216.50000925819091}</string>
+				<string>{141.00001242107902, 250.49999074181045}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>7</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>7</integer>
+			</dict>
+			<key>ID</key>
+			<integer>58</integer>
+			<key>Points</key>
+			<array>
+				<string>{141.00000815406864, 144.50000925819205}</string>
+				<string>{141.00000815406864, 178.49999074180886}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>3</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>3</integer>
+			</dict>
+			<key>ID</key>
+			<integer>57</integer>
+			<key>Points</key>
+			<array>
+				<string>{141.00000601756776, 72.500001263480357}</string>
+				<string>{141.00000601756776, 106.49999073651382}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>StickArrow</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>56</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{138.5, 67}, {5, 5}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>56</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Color</key>
+					<dict>
+						<key>b</key>
+						<string>0</string>
+						<key>g</key>
+						<string>0</string>
+						<key>r</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{117, 323}, {48, 37}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>9</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 BB3}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{203.5, 251}, {48, 37}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>8</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 BB5}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{117, 179}, {48, 37}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>7</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 BB2}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{117, 251}, {48, 37}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>6</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 BB4}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{290, 251}, {48, 37}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>5</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 BB1}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{117, 107}, {48, 37}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Roman</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>3</integer>
+			<key>Shape</key>
+			<string>Circle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 BB0}</string>
+			</dict>
+		</dict>
+	</array>
+	<key>GridInfo</key>
+	<dict/>
+	<key>GuidesLocked</key>
+	<string>NO</string>
+	<key>GuidesVisible</key>
+	<string>YES</string>
+	<key>HPages</key>
+	<integer>1</integer>
+	<key>ImageCounter</key>
+	<integer>1</integer>
+	<key>KeepToScale</key>
+	<false/>
+	<key>Layers</key>
+	<array>
+		<dict>
+			<key>Lock</key>
+			<string>NO</string>
+			<key>Name</key>
+			<string>Calque 1</string>
+			<key>Print</key>
+			<string>YES</string>
+			<key>View</key>
+			<string>YES</string>
+		</dict>
+	</array>
+	<key>LayoutInfo</key>
+	<dict>
+		<key>Animate</key>
+		<string>NO</string>
+		<key>circoMinDist</key>
+		<real>18</real>
+		<key>circoSeparation</key>
+		<real>0.0</real>
+		<key>layoutEngine</key>
+		<string>dot</string>
+		<key>neatoSeparation</key>
+		<real>0.0</real>
+		<key>twopiSeparation</key>
+		<real>0.0</real>
+	</dict>
+	<key>LinksVisible</key>
+	<string>NO</string>
+	<key>MagnetsVisible</key>
+	<string>NO</string>
+	<key>MasterSheets</key>
+	<array/>
+	<key>ModificationDate</key>
+	<string>2016-05-19 08:53:32 +0000</string>
+	<key>Modifier</key>
+	<string>Jean-Luc Béchennec</string>
+	<key>NotesVisible</key>
+	<string>NO</string>
+	<key>Orientation</key>
+	<integer>2</integer>
+	<key>OriginVisible</key>
+	<string>NO</string>
+	<key>PageBreaks</key>
+	<string>YES</string>
+	<key>PrintInfo</key>
+	<dict>
+		<key>NSBottomMargin</key>
+		<array>
+			<string>float</string>
+			<string>41</string>
+		</array>
+		<key>NSHorizonalPagination</key>
+		<array>
+			<string>coded</string>
+			<string>BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU051bWJlcgCEhAdOU1ZhbHVlAISECE5TT2JqZWN0AIWEASqEhAFxlwCG</string>
+		</array>
+		<key>NSLeftMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+		<key>NSPaperSize</key>
+		<array>
+			<string>size</string>
+			<string>{594.99997329711914, 842}</string>
+		</array>
+		<key>NSPrintReverseOrientation</key>
+		<array>
+			<string>int</string>
+			<string>0</string>
+		</array>
+		<key>NSRightMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+		<key>NSTopMargin</key>
+		<array>
+			<string>float</string>
+			<string>18</string>
+		</array>
+	</dict>
+	<key>PrintOnePage</key>
+	<false/>
+	<key>ReadOnly</key>
+	<string>NO</string>
+	<key>RowAlign</key>
+	<integer>1</integer>
+	<key>RowSpacing</key>
+	<real>36</real>
+	<key>SheetTitle</key>
+	<string>Canevas 1</string>
+	<key>SmartAlignmentGuidesActive</key>
+	<string>YES</string>
+	<key>SmartDistanceGuidesActive</key>
+	<string>YES</string>
+	<key>UniqueID</key>
+	<integer>1</integer>
+	<key>UseEntirePage</key>
+	<false/>
+	<key>VPages</key>
+	<integer>1</integer>
+	<key>WindowInfo</key>
+	<dict>
+		<key>CurrentSheet</key>
+		<integer>0</integer>
+		<key>ExpandedCanvases</key>
+		<array/>
+		<key>Frame</key>
+		<string>{{844, 131}, {1444, 1265}}</string>
+		<key>ListView</key>
+		<true/>
+		<key>OutlineWidth</key>
+		<integer>142</integer>
+		<key>RightSidebar</key>
+		<false/>
+		<key>ShowRuler</key>
+		<true/>
+		<key>Sidebar</key>
+		<true/>
+		<key>SidebarWidth</key>
+		<integer>120</integer>
+		<key>VisibleRegion</key>
+		<string>{{-44, 0}, {647.5, 563}}</string>
+		<key>Zoom</key>
+		<real>2</real>
+		<key>ZoomValues</key>
+		<array>
+			<array>
+				<string>Canevas 1</string>
+				<real>2</real>
+				<real>1</real>
+			</array>
+		</array>
+	</dict>
+</dict>
+</plist>

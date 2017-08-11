@@ -1,0 +1,28 @@
+\begin{tabular}{|c|c| |c|c|c|c|}
+   \hline
+   \multirow{2}{*}{Compiler} & \multirow{2}*{Optim.} & \multicolumn{4}{c|}{Registers in slice}
+   \\\cline{3-6}
+    & &  Avg. & Min & Max. & Std. dev.
+
+    \\\hline\hline
+    \multirow{4}{*}{\textsc{Gcc}} & \verb|-O0| & 61.8\% & 43.7\%  & 78.9\% & 8.8\%
+    
+    \\\cline{2-6}
+     & \verb|-O1| & 64.6\% & 19.1\%  & 87.5\% & 13.6\%
+    
+    \\\cline{2-6}
+     & \verb|-O2| & 64.3\% & 13.3\%  & 92.9\% & 20.3\%
+    
+    \\\cline{2-6}
+     & \verb|-O3| & 62.8\% & 9\%  & 96.4\% & 21.7\%
+
+
+     \\\hline\hline
+     \multirow{2}*{\textsc{Cosmic C}} & \verb|-no| & 40.5\% & 8.6\% & 86.7\% & 16.6\%
+    
+     \\\cline{2-6}
+     & \emph{default} & 37\% & 2.8\% & 66.7\% & 15.8\%
+  
+     \\\hline
+\end{tabular}
+

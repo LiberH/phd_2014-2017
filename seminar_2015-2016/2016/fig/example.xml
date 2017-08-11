@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Template</name>
+		<declaration>// Place local declarations here.
+int g;
+void update_pipeline(int i, bool b) {if (b) {g=i;}}
+void exec_semantic(int i) {g=i;}
+int instr_3000;
+int instr_3004;
+int instr_3008;
+int instr_300c;
+int instr_3010;
+int instr_3014;
+int instr_3018;
+int instr_301c;
+int instr_3020;
+int instr_3024;
+int instr_3028;
+int instr_302c;
+int instr_3030;
+int instr_3034;
+bool nz() {return true;}</declaration>
+		<location id="id0" x="0" y="144">
+			<name x="34" y="136">_300c</name>
+			<label kind="comments" x="93" y="136">b 300c</label>
+		</location>
+		<location id="id1" x="-34" y="569">
+			<name x="34" y="561">_3034</name>
+			<label kind="comments" x="93" y="561">blr</label>
+		</location>
+		<location id="id2" x="0" y="399">
+			<name x="34" y="391">_3024</name>
+			<label kind="comments" x="93" y="391">mr r9,r3</label>
+		</location>
+		<location id="id3" x="-34" y="527" color="#ffc0cb">
+			<name x="34" y="518">_3030</name>
+			<label kind="comments" x="93" y="518">bdnz 3024</label>
+		</location>
+		<location id="id4" x="-34" y="484">
+			<name x="34" y="476">_302c</name>
+			<label kind="comments" x="93" y="476">mr r10,r9</label>
+		</location>
+		<location id="id5" x="-34" y="442">
+			<name x="34" y="433">_3028</name>
+			<label kind="comments" x="93" y="433">add r3,r9,r10</label>
+		</location>
+		<location id="id6" x="-34" y="357">
+			<name x="34" y="348">_3020</name>
+			<label kind="comments" x="93" y="349">b 3028</label>
+		</location>
+		<location id="id7" x="-34" y="315">
+			<name x="34" y="306">_301c</name>
+			<label kind="comments" x="93" y="306">li r9,1</label>
+		</location>
+		<location id="id8" x="-34" y="272" color="#ffc0cb">
+			<name x="34" y="263">_3018</name>
+			<label kind="comments" x="93" y="263">mtctr r8</label>
+		</location>
+		<location id="id9" x="-34" y="230">
+			<name x="34" y="221">_3014</name>
+			<label kind="comments" x="93" y="221">li r10,0</label>
+		</location>
+		<location id="id10" x="-34" y="187" color="#ffc0cb">
+			<name x="34" y="178">_3010</name>
+			<label kind="comments" x="93" y="178">li r8,29</label>
+		</location>
+		<location id="id11" x="-34" y="102">
+			<name x="34" y="93">_3008</name>
+			<label kind="comments" x="93" y="93">bl 3010</label>
+		</location>
+		<location id="id12" x="-34" y="59">
+			<name x="34" y="51">_3004</name>
+			<label kind="comments" x="93" y="51">ori r1,r1,49296</label>
+		</location>
+		<location id="id13" x="-34" y="17">
+			<name x="34" y="8">_3000</name>
+			<label kind="comments" x="93" y="8">lis li,r1</label>
+		</location>
+		<init ref="id13"/>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id12"/>
+			<label kind="assignment" x="212" y="8">update_pipeline(instr_3000,true)</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="212" y="136">update_pipeline(instr_300c,true)</label>
+			<nail x="-9" y="110"/>
+			<nail x="8" y="110"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="assignment" x="212" y="561">update_pipeline(instr_3034,true)</label>
+			<nail x="17" y="501"/>
+			<nail x="17" y="374"/>
+			<nail x="17" y="187"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id5"/>
+			<label kind="assignment" x="212" y="391">update_pipeline(instr_3024,true)</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="guard" x="459" y="501">nz()</label>
+			<label kind="assignment" x="459" y="518">update_pipeline(instr_3030,nz()),
+exec_semantic(instr_3030)</label>
+			<nail x="0" y="484"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="guard" x="212" y="501">!nz()</label>
+			<label kind="assignment" x="212" y="518">update_pipeline(instr_3030,!nz()),
+exec_semantic(instr_3030)</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="assignment" x="212" y="476">update_pipeline(instr_302c,true)</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="assignment" x="212" y="433">update_pipeline(instr_3028,true)</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id5"/>
+			<label kind="assignment" x="212" y="348">update_pipeline(instr_3020,true)</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="assignment" x="212" y="306">update_pipeline(instr_301c,true)</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="assignment" x="212" y="255">update_pipeline(instr_3018,true),
+exec_semantic(instr_3018)</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="assignment" x="212" y="221">update_pipeline(instr_3014,true)</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="assignment" x="212" y="170">update_pipeline(instr_3010,true),
+exec_semantic(instr_3010)</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="assignment" x="212" y="93">update_pipeline(instr_3008,true)</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="assignment" x="212" y="51">update_pipeline(instr_3004,true)</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Template();
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+	</queries>
+</nta>

@@ -1,0 +1,611 @@
+\documentclass{beamer}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{itemize items}[circle]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[frenchb]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\title{%
+  Séminaire d'équipe \\
+  {\bf Notions de \emph{Program Slicing}}}
+  %et application aux Programmes Binaires
+\author{%
+  Armel Mangean \\
+  {\small\tt armel.mangean@irccyn.ec-nantes.fr}}
+\institute{%
+  IRCCyN, équipe Sytème Temps-Réel \\
+  École Centrale de Nantes}
+\date{Octobre 2015}
+
+\begin{document}
+
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Plan}
+    \tableofcontents
+  \end{frame}
+
+  \section{Introduction}
+    \subsection{Définitions} % 2 slides
+    % Example avec programme en langage haut niveau
+      \begin{frame}
+        \frametitle{\subsecname}
+        
+        Soit $\mathcal{LI} = \mathcal{L} \times \mathcal{I}$ un ensemble
+        d'instructions étiquetées avec :
+        \begin{itemize}
+          \item $\mathcal{L}$, un ensemble fini d'étiquettes ;
+          \item $\mathcal{I}$, un ensemble fini d'instructions ;
+            \item $\nexists (l,i),(l',i') \in \mathcal{L} \times \mathcal{I}$
+              tel que $l = l'$.
+        \end{itemize}
+        \vspace{1em}\pause
+
+        Soit $P$ un sous-ensemble fini de $\mathcal{LI}$, un programme.
+        \\ Soit $\mathcal{V}$ un ensemble de variables.
+        \\ $\mathcal{V}_{\iota} \subseteq \mathcal{V}$ est l'ensemble des
+        variables de $\iota \in \mathcal{LI}$.
+        \\ Un état $s$ de $P$ est une valuation de $\mathcal{V}$.
+      \end{frame}
+      
+      \begin{frame}
+        \frametitle{\subsecname}
+        Soit $\mathcal{S}$ l'ensemble des états de $P$.
+        \\ Soit $<\iota>: \mathcal{S} \rightarrow \mathcal{S}$ la
+        \emph{sémantique} de $\iota \in \mathcal{LI}$.
+        \\ Une exécution de $P$ à partie de l'état initial $s_0$ est une séquence
+        \begin{align*}
+          run(P,s_0) = s_0 \iota_0 s_1 \iota_1 \cdots s_{n-1} \iota_{n-1} s_n
+        \end{align*}
+        \vspace{1em}\pause
+
+        
+        Une trace $TR(\varrho)$ de l'exécution $\varrho$ est une séquence
+        \begin{align*}
+          TR(\varrho) = q_0 q_1 \cdots q_n \in (\mathcal{S} \times \mathcal{LI})
+        \end{align*}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+
+        Soit $\mathcal{C} = \langle \iota, V \rangle$ un critère de
+        \emph{slicing} avec $\iota \in P$ et $V \subseteq \mathcal{V}$.
+
+        Soit la projection $proj_V: \mathcal{S} \rightarrow \mathcal{S}$
+        \begin{align*}
+          proj_V(s) = \text{ la valuation }s \text{ restreinte aux variables de }V\text{.}
+        \end{align*}
+        \vspace{1em}\pause
+
+        Soit la projection $proj: (\mathcal{S} \times \mathcal{LI})
+        \rightarrow (\mathcal{S} \times \mathcal{LI}) \cup \{\epsilon\}$ :
+        \[ proj_I(s,\iota) =
+        \begin{cases}
+          \epsilon & \text{ if } \iota \notin I \\
+          (proj_{\mathcal{V}_{\iota}}(s),\iota)& \text{ sinon.}
+        \end{cases}
+        \]
+        \vspace{1em}\pause
+        
+        Soit la projection $proj^*$, l'extension de $proj$ aux traces, telle que :
+        \[ proj^*(u) =
+        \begin{cases}
+          \epsilon                & \text{ if } u = \epsilon \\
+          proj^*(w).proj(s,\iota) & \text{ if } u = w.(s,\iota)
+        \end{cases}
+        \]
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+        $S_{\mathcal{C}} \subseteq P$ est un \emph{slice} de $P$ pour le critère
+        de \emph{slicing} $\mathcal{C}$ si :
+        \begin{align*}
+          proj^*(TR(run(P,s_0))) = proj^*(TR(run(S_{\mathcal{C}},s_0))
+        \end{align*}
+        \vspace{1em}\pause
+        
+        {\bf $\rightarrow$ On cherche $S_{\mathcal{C}}$ tel que $|S_{\mathcal{C}}|$ soit
+          minimale.}
+      \end{frame}
+
+      \subsubsection*{Intra- et interprocéduralité}
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+        Le \emph{slicing} intraprocédural consiste au calcul d'un \emph{slice}
+        d'une unique procédure monolithique.
+        \vspace{1em}\pause
+        
+        Le \emph{slicing} interprocédural consiste au calcul d'un \emph{slice}
+        d'un programme entier où le \emph{slice} dépasse les frontière d'un
+        appel de procédure.
+        \vspace{1em}\pause
+
+        La principale difficulté du \emph{slicing}
+        interprocédural est de prendre en compte correctement le contexte d'appel
+        d'un procédure appelée.
+      \end{frame}
+      
+  \subsection{Exemple} % 1 slide
+    %\subsection{Weiser, 81}
+    % Algorithm:
+    % - Intra- and interprocedual
+    % - On structured code
+    % Limitations:
+    % - Not suitable for unstructured and binary code
+    % > Seul des techniques basées graphes manipulent des binaires
+    \input{src/prog}
+      
+    \subsection{Intérêt} % 2 slides
+    % Analyse temporelle basée vérification de modèles
+    % Réduction de l'espace d'état (vis-à-vis des registres)
+    % Slicing des instructions de contrôle
+      \begin{frame}
+        \frametitle{\subsecname}
+
+        \begin{itemize}
+          \item Débogage, maintenance, optimisation
+          \item Génération de test, parallélisation
+          \item \emph{Reverse engineering}, \emph{cracking}
+          \item \dots
+            \vspace{1em}\pause
+          \item Estimation de WCET (et BCET)
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+
+        Analyse temporelle par vérification de modèle
+        \begin{itemize}
+          %\item Domaine d'application : tâches non-isolées
+          \item Modularité propice à la modélisation des systèmes concurrents
+          \item Modèles matériels \emph{exacts}
+          \item Estimations précises de WCET
+          %\item Analyse des chemins d'exécution associés au WCET
+          \item Synthèse des valeurs d'entrées des WCET estimés
+          % Prenant en compte d'autres tâches, des interruptions, du partage des
+          % bus et cache, ...
+            \vspace{1em}\pause
+          \item Explosion de l'espace d'état
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+
+        Program Slicing
+        \begin{itemize}
+          \item Identification des instructions sans influence sur le
+            flot de contrôle
+          \item Retrait des registres de ces instructions du modèle
+          \item Contention de l'explosion de l'espace d'état
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+
+        \begin{figure}
+          \centering
+          \includegraphics[scale=.4]{img/schema.png}
+          \caption{Approche envisagée}
+        \end{figure}        
+      \end{frame}
+    
+  \section{Une approche intraprocedural}
+    \begin{frame}
+      \frametitle{Plan}
+      \tableofcontents[currentsection]
+    \end{frame}
+    
+    %\subsection{Fonctionnement général} % Intraprocedural
+    % Schéma:
+    % Programme -> CFG -> (PDT -> CDG || DDG) -> PDG
+    % + Analyse d'accessibilité
+      \subsection{Structures de données}
+
+      \begin{frame}
+        \frametitle{\secname}
+        \framesubtitle{\subsecname}
+
+        \begin{figure}
+          \centering
+          \includegraphics[scale=.33]{img/process.png}
+          \caption{Structures de données utilisées}
+        \end{figure}
+      \end{frame}
+      
+      \subsubsection*{Control Flow Graph}
+      % Data structures:
+      % - CFG
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+        
+        %Un bloc de base est une séquence d'instructions avec :
+        %\begin{itemize}
+        %  \item Un unique n{\oe}ud d'entrée ;
+        %  \item Un unique n{\oe}ud de sortie.
+        %\end{itemize}
+        %\vspace{1em}
+        
+        Le CFG du programme $P$ est un tuple $\mathcal{G} = \langle
+        \mathcal{N},\mathcal{E},n_0,n_e \rangle$ avec :
+        \begin{itemize}
+          \item $\mathcal{N}$, l'ensemble fini des instruction étiquetées\\
+            (bijection sur $\mathcal{LI}$) ;
+          \item $\mathcal{E} \subseteq (\mathcal{N} \times \mathcal{N})$, un
+            ensemble fini d'arcs orienté ;
+          \item $n_0 \in \mathcal{N}$, le n{\oe}ud d'entrée ;
+          \item $n_e \in \mathcal{N}$, le n{\oe}ud de sortie.
+        \end{itemize}
+      \end{frame}
+
+
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+        
+        \begin{figure}
+          \centering
+          \includegraphics[scale=.4]{img/cfg-fix.png}
+          \caption{Le CFG de $P$}
+        \end{figure}  
+      \end{frame}
+
+      
+      \subsubsection*{Data Dependence Graph}
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+          Il y a  une dépendence de donnée entre le n{\oe}ud $n$ et le n{\oe}ud $d$ si :
+          \begin{itemize}
+                \item $n$ utilise une donnée $v$ définie par $d$ ;
+                \item $\exists p$ un chemin de $c$ à $n$ sur $\mathcal{G}$ ;
+                \item $\nexists m \in p \ \{c,n\}$ tel que $m$ défini $v$.
+          \end{itemize}
+      \end{frame}
+        
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+        \begin{onlyenv}<1>
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/ddg_i-fix.png}
+            \caption{DDG pour {\tt i}}
+          \end{figure}
+        \end{onlyenv}
+
+        \begin{onlyenv}<2>
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/ddg_sum-fix.png}
+            \caption{DDG pou {\tt sum}}
+          \end{figure}
+        \end{onlyenv}
+
+        \begin{onlyenv}<3>
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/ddg_product-fix.png}
+            \caption{DDG pour {\tt product}}
+          \end{figure}
+        \end{onlyenv}
+      \end{frame}
+      
+    \subsubsection*{Post-Dominator Tree}
+    %\subsection{Lengauer et al., 79}
+    % Data structures:
+    % - PDT
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+        
+        Soit $\mathcal{G} = \langle \mathcal{N}, \mathcal{E}, n_0, n_e \rangle$
+        et $n, d, p \in \mathcal{N}$.
+        \vspace{1em}
+
+        Le n{\oe}ud $d$ est un dominateur du n{\oe}ud $n$
+        si tous les chemins de $n_0$ au n{\oe}ud $n$
+        contiennent le n{\oe}ud $d$. \\
+        $\rightarrow$ Par défintion, tout n{\oe}ud se domine lui-même.
+        \vspace{1em}\pause
+
+        Soit $\mathcal{E}^{-1} = \{(v, u) | (u, v) \in \mathcal{E}\}$.\\
+        Le n{\oe}ud $p$ est un post-dominateur du n{\oe}ud $n$
+        si $p$ est dominateur du n{\oe}ud $n$
+        dans le graphe $\mathcal{G} = \langle \mathcal{N}, \mathcal{E}^{-1},
+        n_e, n_0 \rangle$.
+        
+        Le n{\oe}ud $s$ est un dominateur strict du n{\oe}ud $n$
+        si \\ $s$ domine de $n$ et $s \neq n$. \\
+        $\rightarrow$ Par définition, le n{\oe}ud $n_0$ n'a pas de dominateur strict.
+        \end{frame}
+        
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+        
+        Le n{\oe}ud $i$ est un dominateur immédiat du n{\oe}ud $n$
+        si $i$ domine strictement $n$
+        et $i$ ne domine strictement aucun autre n{\oe}ud $m$
+        tel que $m$ domine strictement $n$. \\
+        $\rightarrow$ Par définition, tout n{\oe}ud a un unique dominateur immédiat
+        sauf $n_0$ qui n'en a aucun.
+        \vspace{1em}\pause
+
+        L'arbre $T$ est un arbre de dominateurs
+        si chaque n{\oe}ud parent est dominateur immédiat des ses fils. \\
+        $\rightarrow$ Par défintion, $n_0$ est la racine d'un tel arbre.
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+        \begin{onlyenv}<1>
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/rcfg-fix.png}
+            \caption{CFG inversé}
+          \end{figure}
+        \end{onlyenv}
+        
+        \begin{onlyenv}<2>
+          \begin{figure}
+            \centering
+
+            % L8 dom {L8-L1} idom {L7   }
+            % L7 dom {L7-L1} idom {L4   }
+            % L6 dom {L6,L5} idom {L5   }
+            % L5 dom {L5   } idom {     }
+            % L4 dom {L6-L1} idom {L3,L6}
+            % L3 dom {L3-L1} idom {L2   }
+            % L2 dom {L2-L1} idom {L1   }
+            % L1 dom {L1   } idom {     } 
+
+            \includegraphics[scale=.4]{img/pdt-fix.png}
+            \caption{PDT}
+          \end{figure}
+        \end{onlyenv}
+      \end{frame}
+
+    
+      \subsubsection*{Control Dependence Graph}
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+        \begin{block}{Control Dependence Graph}
+          Il y a une dépendance de contrôle entre le n{\oe}ud $n$ et le n{\oe}ud $c$ si :
+          \begin{itemize}
+            \item intuitivement, l'exécution de $c$ détermine si $n$ est exécuté.
+            \item formellement, 
+              \begin{itemize}
+                \item $\exists p$ un chemin de $c$ à $n$ sur $\mathcal{G}$ ;
+                \item $n$ ne post-domine pas $c$.
+              \end{itemize}
+          \end{itemize}
+        \end{block}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+        \begin{figure}
+          \centering
+          \includegraphics[scale=.4]{img/cdg-fix.png}
+          \caption{CDG}
+        \end{figure}
+      \end{frame}
+
+    \subsubsection*{Program Dependence Graph}
+    %\subsection{Ferrante et al., 87}
+    % Data structures:
+    % - DDG
+    % - CDG
+    % - PDG
+
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+        Le PDG issu du CFG $G$ est un tuple $\mathcal{P} = \langle
+        \mathcal{N},\mathcal{E},n_0,n_e \rangle$ avec :
+        \begin{itemize}
+          \item $\mathcal{N}$, l'ensemble des n{\oe}ud de $\mathcal{G}$ ;
+          \item $\mathcal{E}$, l'union des ensembles d'arcs du DDG et du CDG issu de $\mathcal{G}$ ;
+          \item $n_0 \in \mathcal{N}$, le n{\oe}ud d'entrée de $\mathcal{G}$ ;
+          \item $n_e \in \mathcal{N}$, le n{\oe}ud de sortie de $\mathcal{G}$.
+        \end{itemize}
+      \end{frame}
+
+      \begin{frame}
+        \frametitle{\subsecname}
+        \framesubtitle{\subsubsecname}
+
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/pdg-fix.png}
+            \caption{PDG}
+          \end{figure}
+      \end{frame}
+
+    \subsection{Algorithme}
+      \begin{frame}
+        \frametitle{\subsecname}
+
+        \begin{onlyenv}<1>
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/access-fix.png}
+            \caption{Analyse d'accessibilité pour $L7$}
+          \end{figure}
+        \end{onlyenv}
+            
+        \begin{onlyenv}<2>
+          \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{img/slice-fix.png}
+            \caption{Le slice $S_{\langle L7, \{sum\} \rangle}$}
+          \end{figure}
+        \end{onlyenv}
+      \end{frame}
+
+      \appendix
+      \addtocounter{part}{-1}
+
+      %% \section{LT79}
+      %% \begin{frame}
+      %%   \frametitle{\secname}
+
+      %%   \begin{onlyenv}<1>
+      %%     \begin{figure}
+      %%       \centering
+      %%       \includegraphics[scale=.4]{img/rcfg-fix.png}
+      %%       \caption{CFG inverse}
+      %%     \end{figure}
+      %%   \end{onlyenv}
+
+      %%   \begin{onlyenv}<2>
+      %%     \begin{figure}
+      %%       \centering
+      %%       \includegraphics[scale=.4]{img/dfs-fix.png}
+      %%       \caption{Arbre couvrant $\mathcal{T}$ issu du \emph{DFS}}
+      %%     \end{figure}
+      %%   \end{onlyenv}
+
+      %%   \begin{onlyenv}<3>
+      %%   $u \xrightarrow{\bullet} v$, $u$ est un ancetre de $v$ dans l'arbre couvrant $\mathcal{T}$. \\
+      %%   $u \xrightarrow{+} v$, $u \xrightarrow{\bullet} v$ et $u \neq v$.
+      %%     \vspace{1em}
+          
+      %%   Soit $w \neq n_0$ :
+      %%   \begin{align*}
+      %%   sdom(w) = \\
+      %%     min(  \{&\ v       &|&\ &(&v,w) \in \mathcal{E}                     &\text{ et }& v < w\} \\
+      %%     \cup\ \{&\ sdom(u) &|&\ \exists &(&v,w) \in \mathcal{E},\ u \xrightarrow{\bullet} v &\text{ et }& u > w\}
+      %%     )
+      %%   \end{align*}
+
+      %%   Soit $w \neq n_0$ et $sdom(u)$ minimum pour $sdom(w) \xrightarrow{+} u \xrightarrow{\bullet} v$ :
+      %%   \begin{align*}
+      %%     idom(w) =
+      %%     \begin{cases}
+      %%       sdom(w) & \text{si } sdom(w) = sdom(u)\text{,} \\
+      %%       idom(u) & \text{sinon.}
+      %%     \end{cases}
+      %%   \end{align*}
+      %%   \end{onlyenv}
+            
+      %%   \begin{onlyenv}<4>
+      %%     \begin{figure}
+      %%       \centering
+      %%       \includegraphics[scale=.4]{img/sdom-fix.png}
+      %%       \caption{Semi-dominateurs}
+      %%     \end{figure}
+      %%   \end{onlyenv}
+
+      %%   \begin{onlyenv}<5>
+      %%     \begin{figure}
+      %%       \centering
+      %%       \includegraphics[scale=.4]{img/pdt-fix.png}
+      %%       \caption{PDT}
+      %%     \end{figure}
+      %%   \end{onlyenv}
+      %% \end{frame}
+
+      %% \begin{frame}
+      %%   \frametitle{\secname}
+        
+      %%   \begin{onlyenv}<1>
+      %%     \begin{figure}
+      %%       \centering
+      %%       \includegraphics[scale=.4]{img/dfs2.png}
+      %%       \caption{Autre example}
+      %%     \end{figure}
+      %%   \end{onlyenv}
+      %% \end{frame}
+
+
+      
+  %%   \section{Une approche interprocedural}
+  %%   \subsection{Structures de données}
+  %%   \subsubsection*{System Dependence Graph}
+  %%   % Data structures:
+  %%   % - SDG
+  %%   % Algorithm:
+  %%   % - Intra- and interprocedural
+  %%   % - On structured code
+  %%     \begin{frame}
+  %%       \frametitle{\subsecname}
+  %%       \framesubtitle{\subsubsecname}
+  %%     \end{frame}
+
+  %%   \subsection{Algorithme}
+  %%     \begin{frame}
+  %%       \frametitle{\subsecname}
+  %%       \framesubtitle{\subsecname}
+  %%     \end{frame}
+
+  %% %% \section{Application aux programmes binaires}
+  %% %%   \begin{frame}
+  %% %%     \frametitle{Plan}
+  %% %%     \tableofcontents[currentsection]
+  %% %%   \end{frame}
+
+    %% \subsubsection{Agrawal, 94}
+    %% % Data structures:
+    %% % - LST
+    %% % - no SDG
+    %% % Algorithm:
+    %% % - Intraprocedural
+    %% % - On unstructured code
+    %%   \begin{frame}
+    %%     \frametitle{\subsecname}
+    %%     \framesubtitle{\secname}
+    %%   \end{frame}
+    
+    %% \subsubsection{Cifuentes et al., 97} 
+    %% % Data structures:
+    %% % - no LST
+    %% % - no DDG
+    %% % - UDC
+    %% % Algorithm:
+    %% % - Intraprocedural
+    %% % - On binary code
+    %%   \begin{frame}
+    %%     \frametitle{\subsecname}
+    %%     \framesubtitle{\secname}
+    %%   \end{frame}
+    
+    %% \subsection{Kiss et al., 03}
+    %% % Data structures:
+    %% % - SDG specialized to handling binaries
+    %% % Algorithm:
+    %% % - Intra- and interprocedural
+    %% % - On binary code
+    %%   \begin{frame}
+    %%     \frametitle{\subsecname}
+    %%     \framesubtitle{\secname}
+    %%   \end{frame}
+
+\end{document}

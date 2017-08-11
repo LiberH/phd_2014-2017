@@ -1,0 +1,26 @@
+\begin{tabular}{ |l| |c|c|c|c| |c|c| }
+  \hline
+  \multirow{2}{*}{Source file}
+  & \multicolumn{4}{c||}{\textsc{Gcc}}
+  & \multicolumn{2}{c|}{\textsc{Cosmic C}}
+
+  \\\cline{2-7}
+  & \multicolumn{1}{c|}{\texttt{-O0}} & \multicolumn{1}{c|}{\texttt{-O1}} & \multicolumn{1}{c|}{\texttt{-O2}} & \multicolumn{1}{c||}{\texttt{-O3}}
+  & \multicolumn{1}{c|}{\texttt{-no}} & \multicolumn{1}{c|}{\emph{default}}
+
+  \\\hline\hline
+  \verb|adpcm.c|
+  & $11/17$, $35\%$ & $28/32$, $13\%$ & $26/28$, $7\%$ & $33/36$, $8\%$
+  & $22/37$, $41\%$ & $22/37$, $41\%$
+
+    \\\hline\hline
+  \multirow{2}{*}{Average}
+  & \multicolumn{1}{c|}{$38\%$} & \multicolumn{1}{c|}{$35\%$} & \multicolumn{1}{c|}{$36\%$} & \multicolumn{1}{c||}{$37\%$}
+  & \multicolumn{1}{c|}{$59\%$} & \multicolumn{1}{c|}{$54\%$}
+
+  \\\cline{2-7}  
+  & \multicolumn{4}{c||}{$37\%$}
+  & \multicolumn{2}{c|}{$57\%$}
+
+  \\\hline
+\end{tabular}

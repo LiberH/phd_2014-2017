@@ -1,0 +1,71 @@
+% !TEX root =  main.tex
+\renewcommand{\baselinestretch}{1.2}
+\section{Introduction}
+\label{sec:introduction}
+
+  %% The timing analysis of a real-time system must determine if the set of
+  %% possible executions of the system respect the timing constraints expressed
+  %% in its specifications. In order to realise this analysis, the WCET of the
+  %% tasks composing the software part of the system must be known. These values
+  %% are generaly impossible to compute whereas it is possible to compute upper
+  %% bounds for these.
+ 
+  In the recent years, several works have explored techniques to statically
+  estimate the worst-case execution times (WCET) of a program using model
+  checking~\cite{Gustavsson2010,DOT10,CB13}. The most important issue
+  encountered when using model checking to perform WCET estimation is the
+  exponential size of the state space that must be exhaustively explored during
+  the analysis~\cite{Wil04}. To fight this problem, state-of-the-art model
+  checking tools for dense timed systems such as \textsc{Uppaal}~\cite{LPY97}
+  use powerful symbolic algorithms and data structures. It has been shown that
+  it allows to deal with small but realistic instances of the WCET
+  problem~\cite{Gustavsson2010,DOT10}. It is expected that model checking
+  technology will continue to improve in the coming years, widening the range of
+  instances that can be solved.
+
+  A different and complementary direction to deal with the explosion of the
+  state space consists in abstracting the models of the
+  programs~\cite{CB13,Brandner2014} or the models of the hardware
+  components~\cite{Cassez15}. The idea is to remove the information which does
+  not impact the WCET. This work follows this direction, with a focus on the
+  models of programs. In the continuation of prior work~\cite{CB13} we explore
+  the use of program slicing~\cite{Wei81} at the level of the binary code to
+  abstract the model of the program.
+
+  In this paper we introduce \best, a program slicer for binary code. We
+  describe its architecture and implementation. We explain the interface
+  between \best\ and \h~\cite{KBB12}, a toolchain built around a Hardware
+  Architecture Description Language (HADL). Thanks to this interface, the core
+  of \best\ is independent from the target instruction set of the binary code.
+  We also use \best\ and the Mälardalen benchmarks to show how to compute
+  abstract model of programs and report on the benefits that could be reached
+  with this approach.
+  
+  The paper is organized as follows. In Section~\ref{sec:relatedworks} we give
+  an overview of related works. In Section~\ref{sec:modelchecking} we outline an approach
+  to the estimation of WCET with model checking. In Section~\ref{sec:slicing} we
+  provide a summary of program slicing. In Section~\ref{sec:implementation} we
+  describe the implementation of \best\ and its interface with \h. In
+  Section~\ref{sec:results} we report on an evaluation of the abstraction approach using
+  \best{}. In Section~\ref{sec:conclusion} we conclude
+  the paper.
+
+  %% Among the various existing techniques, we are interested on those based on
+  %% the timed systems verification theory~\cite{DOT10, CB13}. The time bound is
+  %% determined by searching the longest path in a model composed of a model of
+  %% the binary executable of a task and a set of models of the hardware
+  %% architecture components (processor, pipeline, caches, busses, etc.).
+  
+  %% In comparison with the other approaches, these techniques allow a less
+  %% abstract modelisation of the hardware behaviors, which allow to obtain more
+  %% accurate bounds. However, their application stills limited due to the state
+  %% space explosion of the model to analyse~\cite{Wil04}.
+  
+  %% Following~\cite{CB13}, our work aims to contribute to control the size of
+  %% the state space by abtracting the binary executable. This abstraction
+  %% consist in limiting the model state to the values of registers and memory
+  %% words that have an impact on the control flow. The computation of this
+  %% abstraction is done in two steps. First, the control flow graph of the
+  %% program is reconstructed. Second, this graph is analysed using program
+  %% slicing to compute the subset of the relevant registers and memory words.
+  %% In the following, we focus on this second step.

@@ -1,0 +1,104 @@
+%% Cet article décrit le travail d'implémentation d'un outil de génération de
+%% modèles de programmes. Cette implémentation fait partie d'un travail de
+%% développement d'une approche d'analyse temporelle des systèmes embarqués
+%% temps-réel par vérification de modèles temporisés.
+%% 
+%% Pour ce faire, les modèles produits sont générés sous forme d'automates finis
+%% représentant les CFG des programmes considérés. Les modèles produits sont issus
+%% de reconstructions de CFG à partir de fichiers exécutables. Leur taille est
+%% limitée en nombre de n{\oe}ud par \textit{program slicing} des CFG.
+
+%% Les microprocesseurs multi-c{\oe}urs sont de plus en plus employés dans l'embarqué
+%% temps-réel à des fins de performances et de baisse de consommation d'énérgie.
+%% 
+%% À la différence des approches existantes d'analyse temporelle par vérification
+%% de modèles, l'approche en développement se veut adaptée aux plateformes
+%% matérielles multi-c{\oe}urs.
+
+\section{Perspectives}
+\label{sec:future}
+
+% Déjà dit en intro
+  %La méthode de génération automatique de modèles de programmes qui a été
+  %décrite ci-dessus fait partie d'un travail de développement d'une approche
+  %d'analyse temporelle des systèmes embarqués temps-réel par vérification de
+  %modèle temporisé de ce point de vue similaire à différentes méthodes
+  %existantes \cite{CB13, DOT10}.
+
+  \subsection{Modélisation d'une plateforme multi-c{\oe}ur}
+
+    %% % Inéviatbilité de l'utilisation de plateformes multi-c{\oe}urs dans le futur.
+    %% 
+    %% L'utilisation futur de plateformes multi-c{\oe}urs dans les systèmes
+    %% temps-réel semble inévitable et ce à des fins de performances et de
+    %% baisse de consommation d'énérgie.
+
+    % Problèmatique des plateformes multi-c{\oe}urs pour l'analyse temporelle.
+
+    Il est largement considéré aujourd'hui que les multi-c{\oe}urs
+    seront massivement employés dans le futur de l'embarqué temps-réel à des
+    fins de performances et de baisse de consomation d'énérgie. Le problème qui
+    se pose est que de telles plateformes ne fournissent pas forcemment de
+    garanties sur les propriétés temps-réel des logiciels s'exécutant dessus.
+
+    Les bus de données partagés font partie des équipements les plus critiques
+    de ce point de vue du fait des possibles conflits d'accés entre les
+    différents c{\oe}urs. De part leur complexité de fonctionnement, on constate
+    qu'ils abaissent significativement la precision des calculs de WCET des
+    plateformes multi-c{\oe}urs.
+
+    Les temps d'accès à des données en mémoire sont très variables selon qu'ils
+    sont réalisés vers la mémoire centrale ou la mémoire cache. Il est donc
+    nécessaire de modéliser fidélement la mémoire cache sans quoi les calculs de
+    WCET ne peuvent être précis.
+
+    %% % Incompatibilité avec les analyses temporelles actuelles.
+    %% 
+    %% Cependant, les analyses temporelles actuelles se limitent le plus souvent au
+    %% calcul des pires temps d'exécution des tâches en isolation.
+    %%
+    %% Il nous parrait nécessaire d'étendre l'analyse temporelle des systèmes
+    %% embarqués temps-réel pour tenir compte des comportements spécifiques qui
+    %% peuvent advenir lors de l'exécution parellèle de plusieurs tâches.
+
+    \vspace{1em}
+
+    % Perspectives associées.
+
+    L'une des ambitions de ce travail est d'étudier l'intérêt des méthodes
+    d'analyse temporelle basées sur la vérification de modèles temporisés pour
+    les plateformes matérielles multi-c{\oe}urs. Pour ce faire, un modèle
+    temporisé d'une plateforme multi-c{\oe}ur PowerPC sera réalisé.  L'analyse
+    temporelle portera sur les systèmes obtenus par produit synchronisé de ce
+    modèle et des modèles logiciels engendrés par la méthode décrite ci-dessus.
+
+  \subsection{Spécialisation de la vérification}
+
+    % Problèmatique des plateformes multi-c{\oe}urs pour la vérification de modèle.
+
+    La modélisation d'une plateforme matérielle complexe implique un nombre de
+    localités et d'horloges important dans le modèle. De fait, malgrès la
+    réduction du modèle logiciel grâce à la technique qui a été décrite ici, la
+    vérification risque de ne pas aboutir
+    soit par manque d'espace mémoire, soit du fait d'un temps de traitement trop
+    important dû à l'explosion de la taille de l'espace d'état à traiter.
+
+    \vspace{1em}
+
+    % Perspectives associés.
+
+    Pour pallier ce problème, les algorithmes et structures de données utilisés
+    pour la vérification seront spécialisés. Cette spécialisation exploitera
+    des propriétés de monotonie pour couper rapidement des branches lors de
+    l'exploration de l'espace d'état.
+
+    Ces résultats seront comparés rigouresement aux temps d'exécution mesurés sur une
+    plateforme physique PowerPC multi-c{\oe}urs dont le modèle aura été réalise.
+    Parmi les programmes dont les WCET seront calculé on retrouvera les
+    programmes du banc d'essai de Mälardalen \cite{GBA10} dont les WCET réels
+    sont connus.  
+    %La méthode de génération automatique de modèles de programmes
+    %qui a été décrite ci-dessus fait partie d'un travail de developpement d'une
+    %approche d'analyse temporelle des systèmes embarqués temps-réel par
+    %vérification de modèle temporisé de ce point de vue similaire à différentes
+    %méthodes existantes \cite{CB13, DOT10}.

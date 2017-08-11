@@ -1,0 +1,48 @@
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize\ttfamily,
+  keepspaces=true,
+  language=C,
+  stepnumber=1,
+  tabsize=2,
+}
+
+\begin{frame}[fragile]
+\frametitle{\subsecname}
+
+\begin{onlyenv}<1>
+\begin{figure}
+\begin{lstlisting}
+L1:  int i = 1;
+L2:  int sum = 0;
+L3:  int product = 1;
+L4:  for (; i < N; ++i)
+      {
+L5:      sum += i;
+L6:      product *= i;
+      }
+L7:  write(sum);
+L8:  write(product);
+\end{lstlisting}
+\caption{Un programme $P$}
+\end{figure}
+\end{onlyenv}
+
+\begin{onlyenv}<2>
+\begin{figure}
+\begin{lstlisting}
+L1:  int i = 1;
+L2:  int sum = 0;
+L3:
+L4:  for (; i < N; ++i)
+      {
+L5:      sum += i;
+L6:
+      }
+L7:  write(sum);
+L8:
+\end{lstlisting}
+\caption{Un slice $S_{\langle L7, \{sum\} \rangle}$}
+\end{figure}
+\end{onlyenv}
+\end{frame}

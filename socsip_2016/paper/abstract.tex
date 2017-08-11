@@ -1,0 +1,15 @@
+\begin{abstract}
+  Cet article décrit l'implémentation d'un outil de calcul de modèles abstraits 
+  de programmes binaires. Ces modèles sont destinés à être fournis en entrée
+  d'une chaîne de calcul de borne supérieure de pire temps d'exécution basée la
+  théorie de la vérification des systèmes temporisés~\cite{CB13}.
+  Le calcul consiste à identifier le sous-ensemble des registres et des mots mémoire
+  dont la valeur doit être connue pour déterminer le flot d'exécution du
+  programme.
+  
+  %Le calcul se fait en deux étapes.  D'abord, le graphe de flots de contrôle du
+  %programme est reconstruit sous forme d'un automate fini à partir d'un fichier
+  %binaire éxécutable. Ensuite, ce modèle est analysé \emph{via} \emph{program
+      %slicing} pour calculer le sous-ensemble des registres et adresses mémoires
+  %pertinents.
+\end{abstract}

@@ -1,0 +1,41 @@
+%!TEX root = ./main.tex
+\section{Related works and contribution}
+\label{sec:relatedworks}
+
+  In the context of static WCET analysis, program slicing has been
+  explored~\cite{Sandberg2006,Lokuciejewski2009,CB13}. Program slicing is mostly
+  used to accelerate the static analysis of flow
+  facts~\cite{Sandberg2006,Lokuciejewski2009}. Our goals are different, as well
+  as the slicing technique. In contrast to our work, program slicing is applied
+  to structured programs at the source code level (or intermediate code
+  level~\cite{Sandberg2006}). Our tool works at the binary code level. As a
+  positive side effect, it is independent from both the programming language and
+  the compiler. To our best knowledge, there is no established tool for slicing
+  non-x86 binary code and \best\ aims at filling this gap.
+
+  Our work is the continuation of previous work by Cassez and
+  Béchennec~\cite{CB13}. In this work they propose a prototype tool based on the
+  classical dataflow equations approach~\cite{Wei81} that computes slices for
+  ARM-based binary code. Unlike that, our tool is independent from the target
+  instruction set thanks to its interface with the \h\ toolchain. Furthermore,
+  our tool is based on a state-of-the-art graph-based approach~\cite{KJL03}. We
+  also provide an evaluation focused on the benefits of the program abstraction
+  technique.
+
+  Brandner and Jordan~\cite{Brandner2014} propose a graph pruning technique to
+  increase the precision of static WCET estimation. Branches of the Control Flow
+  Graph (CFG) are pruned based on the criticality of their basic blocks. The
+  criticality is defined as the normalized duration of the longest path passing
+  through the block~\cite{Brandner2012}. According to the authors this approach
+  is akin to ``program slicing in the time domain''. Based on this pruning
+  approach, a refinement based WCET calculation meta-algorithm is proposed. We
+  do not address a full WCET analysis in this paper. However, their technique
+  could be combined with our approach to improve WCET calculation. Such a
+  combination should allow to further abstract the program in order to deal with
+  state space explosion.
+
+
+
+
+
+

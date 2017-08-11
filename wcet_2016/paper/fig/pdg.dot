@@ -1,0 +1,27 @@
+digraph PDG {
+  entry [label="",shape=point,height=.1];
+  entry -> BB0 [style=bold];
+  entry -> BB1 [style=bold];
+  entry -> BB2 [style=bold];
+  entry -> BB3 [style=invis];
+  entry -> BB4 [style=bold];
+  entry -> BB5 [style=bold];
+  BB4   -> BB3 [style=bold];
+
+  clusterBB0 [shape=record,height=.2,width=.5,label="{<_3000>3000|<_3004>3004|<_3008>3008}"];
+  clusterBB1 [shape=record,height=.2,width=.5,label="{<_300c>300c}"];
+  clusterBB2 [shape=record,height=.2,width=.5,label="{<_3010>3010|<_3014>3014|<_3018>3018|<_301c>301c|<_3020>3020}"];
+  clusterBB3 [shape=record,height=.2,width=.5,label="{<_3024>3024}"];
+  clusterBB4 [shape=record,height=.2,width=.5,label="{<_3028>3028|<_302c>302c|<_3030>3030}"];
+  clusterBB5 [shape=record,height=.2,width=.5,label="{<_3034>3034}"];
+  BB0 -> clusterBB0 [style=dashed];
+  BB1 -> clusterBB1 [style=dashed];
+  BB2 -> clusterBB2 [style=dashed];
+  BB3 -> clusterBB3 [style=dashed];
+  BB4 -> clusterBB4 [style=dashed];
+  BB5 -> clusterBB5 [style=dashed];
+
+  clusterBB2:_3010:e -> clusterBB2:_3018:e [style=solid];
+  clusterBB2:_3018:e -> clusterBB4:_3030:e [style=solid];
+  clusterBB4:_3030:e -> clusterBB4:_3030:e [style=solid];
+}

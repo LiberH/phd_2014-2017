@@ -1,0 +1,49 @@
+\documentclass{article}
+\bibliographystyle{plain}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+
+\title{%
+  Rapport de Comité de Suivi de Thèse \\
+  {\bf Analyse temporelle des systèmes temps-réel %multi-c{\oe}urs
+    par vérification de modèles temporisés}}
+
+\author{Armel Mangean}
+\date{Juin 2016}
+
+%% TODO: Ajouter des détails concernant mon avancement
+%%  - dans la compréhension du sujet ;
+%%  - mon analyse du sujet ;
+%%  - la bibliographie.
+
+\begin{document}
+  \maketitle
+  \tableofcontents
+
+  \input{intro}
+  \input{work}
+  \input{future}
+  \input{other}
+
+  \bibliography{refs.bib}
+
+  \appendix\vfill
+  
+  %% \section{Poster accépté à SoC -- SiP'16}
+  %% \label{sec:socsip16}
+  %% \emph{(cf. page suivante)}
+  %% \includepdf[page=1-,frame, scale=.9]{img/socsip16.pdf}
+
+  \section*{\huge Annexes}
+  \section{Article soumis à WCET'16}
+  \label{sec:wcet16}
+  \emph{(cf. page suivante)}\vfill
+  \includepdf[page=1-,frame, scale=.9]{img/wcet16.pdf}
+
+\end{document}

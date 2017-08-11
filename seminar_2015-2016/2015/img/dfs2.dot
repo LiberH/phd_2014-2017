@@ -1,0 +1,29 @@
+digraph G {
+  graph [splines=true];
+  
+  node [fontname="Monospace"];
+
+  L0 [label="0"];
+  L1 [label="1"];
+  L2 [label="2"];
+  L3 [label="3"];
+  L4 [label="4"];
+  L5 [label="5"];
+  L6 [label="6"];
+  L7 [label="7"];
+
+  rankdir=LR;
+  {rank=same; L0 L1 L2 L3 L4 L5}
+  {rank=same; L6 L7}
+
+  L0 -> L1 [style=bold];
+  L1 -> L2 [style=bold];
+  L2 -> L3 [style=bold];
+  L3 -> L4 [style=bold];
+  L4 -> L5 [style=bold];
+
+  L1 -> L3;
+  L2 -> L6 [style=bold];
+  L6 -> L7 [style=bold];
+  L7 -> L5;
+}

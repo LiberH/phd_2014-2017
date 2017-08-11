@@ -1,0 +1,64 @@
+\documentclass[a4paper,UKenglish]{src/oasics}
+\usepackage{microtype}
+\usepackage{multirow}
+\usepackage{graphics}
+\usepackage[normalem]{ulem}
+\usepackage{floatrow}
+
+\title{BEST: a Binary Executable Slicing Tool}
+\author[1]{Armel Mangean}
+\author[2]{Jean-Luc Béchennec}
+\author[3]{Mikaël Briday}
+\author[3]{Sébastien Faucou}
+\affil[1]{École Centrale de Nantes, IRCCyN UMR 6597}
+\affil[2]{CNRS, IRCCyN UMR 6597}
+\affil[3]{Université de Nantes, IRCCyN UMR 6597}
+
+\Copyright{Armel Mangean, Jean-Luc Béchennec, Mikaël Briday and Sébastien Faucou}
+\authorrunning{A. Mangean, J.-L. Béchennec, M. Briday and S. Faucou}
+\subjclass{C.3, D2.4, D2.5} % see http://www.acm.org/about/class/ccs98-html
+% C.3   Real-Time
+% D2.4  Model-Checking
+% D2.5  Code Inspection
+\keywords{Program Slicing, Binary Code Analysis, WCET Analysis}
+
+\newcommand{\best}{\textsc{Best}}
+\newcommand{\h}{\textsc{Harmless}}
+\newcommand{\gcc}{\textsc{Gcc}}
+\newcommand{\cosmic}{\textsc{Cosmic C}}
+\newcommand{\todo}[2]{\textcolor{red}{\bf TODO[#1]\,: #2}}
+\newcommand{\JLB}[1]{\textcolor{blue}{\bf JLB\,: #1}}
+\usepackage{listings}
+\lstnewenvironment{asmlisting}[1][]
+  {\lstset{language=C,float=tb,#1}}% \begin{asmlisting}[...]
+  {} % \end{asmlisting}
+
+\input{src/editor}
+\begin{document}
+
+  %% \begin{enumerate}
+  %%   \item Intro (analyse de wcet par methodes formelles)
+  %%   \item related works
+  %%   \item contribution
+  %%   \item program slicing, overview
+  %%   \item l'outil
+  %%   \item performance evaluation
+  %%   \item conclusion
+  %% \end{enumerate}
+
+  \maketitle
+
+  \input{src/abstract}
+  \input{src/introduction}
+  \input{src/relatedworks}
+  \input{src/model-checking}
+  \input{src/slicing}
+  \input{src/implementation}
+  \input{src/results}
+  \input{src/conclusion}
+  
+  \appendix
+  \bibliographystyle{plain}
+  \bibliography{src/refs}
+
+\end{document}

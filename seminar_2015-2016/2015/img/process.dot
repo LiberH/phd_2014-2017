@@ -1,0 +1,19 @@
+digraph Process {
+  prog  [label = "Code",                     shape = plaintext];
+  cfg   [label = "Control Flow Graph",       shape = rectangle];
+  ddg   [label = "Data Dependence Graph",    shape = rectangle];
+  pdt   [label = "Post-Dominator Tree",      shape = rectangle];
+  cdg   [label = "Control Dependence Graph", shape = rectangle];
+  pdg   [label = "Program Dependence Graph", shape = rectangle, style = bold];
+  slice [label = "Slice",                    shape = oval];
+
+  prog -> cfg;
+  cfg  -> ddg;
+  cfg  -> pdt;
+  cfg  -> cdg;
+  pdt  -> cdg;
+
+  ddg  -> pdg;
+  cdg  -> pdg;
+  pdg  -> slice;
+}
