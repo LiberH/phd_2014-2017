@@ -1,0 +1,18 @@
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+    semithick,state/.style=state with output]
+  \tikzstyle{every state}=[fill=none,draw=black,text=black]
+
+  \node[state]                                     (WNT) {$01$ \nodepart{lower} nt};
+  \node[state]                                     (NT) [right of=WNT] {$00$ \nodepart{lower} nt};
+  \node[state]                                     (WT) [left of=WNT] {$10$ \nodepart{lower} t};
+  \node[state]                                     (T)  [left of=WT] {$11$ \nodepart{lower} t};
+
+  \path (NT)    edge [bend left]  node {taken} (WNT)
+        (NT)    edge [loop right] node {not taken} (NT)
+        (WNT)   edge [bend left]  node {not taken} (NT)
+        (WNT)   edge [bend left]  node {taken} (WT)
+        (WT)    edge [bend left]  node {not taken} (WNT)
+        (WT)    edge [bend left]  node {taken} (T)
+        (T)     edge [bend left]  node {not taken} (WT)
+        (T)    edge [loop left]  node {taken} (T);
+\end{tikzpicture}

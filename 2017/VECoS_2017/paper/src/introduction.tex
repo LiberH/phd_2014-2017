@@ -1,0 +1,39 @@
+\section{Introduction}
+
+Embedded control systems found in domains like automotive, industrial automation, or robotics, have to satisfy real-time requirements stemming from the dynamics of the physical plant they control.
+To design these systems, the worst case execution time (WCET) of the tasks must be computed.
+The execution time of a task is a function of its inputs and the initial state of the microarchitecture.
+As it is usually not possible to run the real system with all possible combinations of these variables, techniques have been developed to statically estimate upper bounds on the WCET~\cite{Wilhelm2008}.
+
+In this context, different approaches have been investigated. 
+One of them is model checking.
+%In model checking, an abstract semantics of the system is given in the form of a formal model.
+%A specification of the expected behavior is also provided in the form of a temporal logic formula.
+%Then the model checker checks the specification with a symbolic exploration of the state space of the abstract system.  
+Using model checking in the context of WCET analysis has been debated in the scientific community.
+In~\cite{Wilhelm2004} it is deemed as ineffective because of the state space explosion problem.
+In~\cite{Metzner2004}, it is claimed that it can actually improve the precision of WCET analysis by leveraging dynamic analysis\footnote{Metzner use dynamic analysis to designate techniques that analyze concrete paths in the system, as opposed to static analysis that consider abstract paths.} of microarchitecture features.
+Both points actually hold: model checking allows to compute more precise bounds but suffers from scalability issues.
+However, recent results show that model checking sufficiently scales to tackle the WCET analysis of systems based on core such as ARM7 or ARM9~\cite{Dalsgaard2010,Cassez2013}.
+
+In this paper, we investigate the case for model checking in the WCET analysis of architectures
+typically found in embedded control systems.
+We consider a core architecture inspired by the e200z4 Power 32-bit architecture.
+More precisely, we consider a microarchitecture with an instruction cache (ICache), a dynamic branch prediction mechanism, a branch target buffer (BTB), % Faut-il faire la distinction entre les deux ? Idem pour la suite de l'article.
+ a prefetch instruction buffer, and a 5-stage pipeline\footnote{The main difference is that the e200z4 is actually a two issues statically scheduled superscalar processor, whereas we consider a single issue processor.}.
+The conjoint operation of all these components produce a very complex behaviour that is difficult to analyse with tight and sound static analysis techniques.
+We show that model checking techniques can actually be used to compute WCET bounds for this kind of architectures.
+
+\subsubsection{Contribution and outline}
+To the best of our knowledge, this paper is the first to propose an analysis integrating at the same time the ICache, the branch target buffer, and the instruction prefetch buffer.
+Among the work exploring model checking for WCET analysis, it is the first to tackle a dynamic branch prediction mechanism.
+Based on this analysis, we also provide an evaluation of the impact of dynamic branch prediction and BTB on the estimation of WCET for embedded control systems.
+
+The paper is organized as follows. 
+In Section~\ref{sec:relatedworks} we provide some background and summarize related works.
+In Section~\ref{sec:architecture} we describe our target microarchitecture.
+In Section~\ref{sec:overview} we describe our WCET analysis framework.
+In Section~\ref{sec:model} we give some insights on the models developed for the dynamic analysis of the target microarchitecture.
+In Section~\ref{sec:results} we report an evaluation based on benchmarks. 
+In Section~\ref{sec:conclusion} we conclude the paper.
+

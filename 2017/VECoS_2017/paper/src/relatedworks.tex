@@ -1,0 +1,61 @@
+\section{Background and related works}
+\label{sec:relatedworks}
+
+\subsection{Branch prediction basis}
+\label{sec:bpbasis}
+
+In modern processors, pipelines are used to improve the instruction execution rate by executing simultaneously different stages of several instructions at the same time.
+Each cycle, one (or more in the case of superscalar processor) instruction is fetched sequentially from the memory and fed into the pipeline.
+When a branch instruction is executed, the outcome (whether the branch is taken or not, and what is the actual target) is usually not known in the lower stages of the pipeline.
+Thus, bubbles\footnote{A bubble, or pipeline stall, is a delay cycle. When a bubble enters a stage, this stage has no activity during the current cycle.} are inserted in these stages until the address of the next instruction is available. These delays are control hazards and have an impact on the execution time.
+
+Branch prediction is a set of techniques used to minimize the occurrence of this situation.
+It consists in trying to predict the outcome of a branch instruction when it gets into the pipeline in order to fetch  the correct following instruction with a high probability.
+The simplest form of branch prediction is static branch prediction based on the program code only.
+A straightforward prediction algorithm is to predict all branches as always not taken.
+If the prediction is correct, no cycle is lost.
+If the prediction is incorrect, the lower stages of the pipeline have to be flushed to mimic the insertion of bubbles.
+A more efficient algorithm widely used is to predict forward branches (conditional statements) as always not taken and backward branches (loops) as always taken.
+
+Dynamic branch prediction uses runtime information to further improve the prediction accuracy.
+There is a wide variety of dynamic branch prediction algorithms that cannot be covered here (see~\cite{Engblom2003} for an overview).
+From now on, we will focuses on the algorithm analysed in this paper.
+It is based on a set of 2-bit saturating counter as illustrated on figure~\ref{fig:sat_counter}.
+From left to right, the four states are usually called: taken (11), weakly taken (10), weakly not taken (01), not taken (00).
+A counter is associated with a branch instruction.
+It is initialized either statically or after the first execution of the branch.
+Then, the state evolves according to the actual outcomes of the execution of the instruction: it is incremented when the branch is taken and decremented otherwise.
+
+\begin{figure}
+    \centering
+    \begin{adjustbox}{width=\textwidth}
+        \input{fig/sat_counter}
+    \end{adjustbox}
+    \caption{State machine of a 2-bit saturating counter. Outputs: \texttt{t} for taken, \texttt{nt} for not taken. The initial state is implementation dependant.}
+    \label{fig:sat_counter}
+\end{figure}
+
+Each of these counters is usually stored along with the target of the branch instruction in an entry of a small cache memory: the BTB. A BTB entry is commonly retrieved with a combination of index and tag computed from the branch instruction.
+When the BTB is full, a replacement policy is applied to free an entry.
+
+\subsection{Analysis of branch prediction techniques}
+
+An important body of work is related to WCET analysis for processor with dynamic branch prediction (see for instance~\cite{Colin2000,Bate2004,Maiza2011,Grund2011625,Puffitsch2016}).
+Most of these works focus on the analysis of branch prediction (whether a branch is taken or not) but except for~\cite{Colin2000} and~\cite{Grund2011625}, do not take into account branch target prediction (whether the target of the branch is in the BTB or not).
+Only~\cite{Grund2011625} analyzes the interactions between the BTB and the instruction prefetch buffer which is mandatory to take into account fine grain penalty for misprediction.
+When this interaction is not analyzed, a uniform penalty must be used to account for misprediction, and the hypothesis of the timing compositionality of the architecture must be implicitly assumed (\textsl{i.e.} the analysis can safely follow local worst case path only~\cite{Wilhelm2009}).  
+Lastly none of these works tackle the problem of analyzing the interactions between the ICache and the branch prediction mechanism.
+Our approach integrates in a single analysis the ICache, the BTB, and the pipeline using an instruction prefetch buffer. 
+
+\subsection{Model checking and WCET analysis of processors}
+
+There is a limited body of work on model checking techniques for the WCET analysis of processors~\cite{Metzner2004,Gustavsson2010,Dalsgaard2010,Cassez2013}.
+In~\cite{Dalsgaard2010} and~\cite{Cassez2013}, it is shown that UPPAAL, a state-of-the-art symbolic model checker for (networks of) timed automata, can be used to model and analyze real-life processors.
+The target processor of these works feature instruction and data caches and an in-order 5-stage pipeline without dynamic branch prediction.
+Our target processor features an ICache and an in-order 5-stage pipeline with a BTB and an instruction prefetch buffer.
+Our ICache model is original, but close to the model used in~\cite{Cassez2013}.
+Our pipeline model is fully original, as it integrates an instruction prefetch buffer and interactions with an original BTB model.
+
+Following~\cite{Cassez2013}, to improve scalability, our analysis framework uses program slicing to narrow the set of instructions and memory locations that must be accurately modeled in order to compute a sound bound.
+%Contrary to~\cite{Cassez2013}, we do not integrate program slicing and construction of the CFG in a single processing step. % Pas nécessaire.
+To improve modularity, we use a standalone, state-of-the-art, program slicer for binary code~\cite{wcet16_mangean}.

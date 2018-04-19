@@ -1,0 +1,80 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 42
+TITLE: WCET analysis by Model Checking for a processor with dynamic branch prediction
+AUTHORS: Armel Mangean, Jean-Luc Béchennec, Mikaël Briday and Sébastien Faucou
+
+Overall evaluation: 2 (accept)
+
+----------- Overall evaluation -----------
+This paper presents the computation of WCET using model checking for
+an architecture with an instruction cache, an instruction prefecth
+buffer and a dynamic branch and target prediction. The modeling is
+done using UPPAAL on slices of program and the evaluation relies on
+the Malardalen benchmarks. The take away message is that modeling
+advanced branch prediction strategies (3 strategies are analyzed) do
+not lead to the classical state space explosion of model checking.
+
+The paper is nicely written and easy to follow. The contribution is
+clearly stated and based on a sound modeling of the behavior of the
+program and the micro-architecture. Besides it is clearly
+evaluated. The description of the target micro-architecture is clear,
+the "models" section could be extended a bit with a more detailed
+description of the proposed models.
+
+> For instance figure 3 is not entirely described: what is bdnz(BB9)
+> that are mentioned on the 2 outgoing transactions from BB10_Inst12.
+> What are the invariants that you can express (should be represented
+> in pink as stated at the beginning of section 5)? May be a common
+> presentation of elements within these 2 sections (micro-architecture
+> and its modeling) could help to stick within the page limit and also
+> more easily point out what is modeled or not.
+
+What is unclear to me is how you take into account the slicing you do
+using BEST? My understanding is that you integrate instruction nearby
+the slice you currently study. But then, how can you be sure what are
+the instructions you should take into account to ensure to model the
+effect between slices on the WCET? Or do you assume a constant
+overhead when adding the WCET of each slice, thus implicitly assuming
+the timing compositionality of the platform? You mention this problem
+in section 2.2, but it is not clear for me what are the consequences
+of the program slicing that you perform in the ability to get the
+global WCET.
+
+> Please comment on this in your paper (I've seen nothing on this
+> point in section 4, while program slicing is stated to limit the
+> state space explosion problem).
+
+Related to figure 3, in section 5.1 you state that the outgoing
+transition of location BB10_Inst10 is not part of the same
+slice. However the next location is BB10_Inst11 which is as far as I
+understand part of the same slice. Is there anything wrong here?
+
+> I believe that the presentation of how slices are handled (see
+> previous paragraph) could be improved.
+
+In section 6, one criticism about Malardalen benchmark is that they
+are very tiny/simple benchmarks. Have you tried other more realistic
+benchmarks (papabench, mibench, etc.) to study the impact on the
+number of states?
+
+> How do you explain the (initially) counter-intuitive result:
+> "modeling a complexe architecture ... does not results in the
+> expected state space explosion"?
+
+Is it because using model checking restrict to actual behavior (as
+opposed to unfeasible path in ILP approaches) and thus provide reduced
+number of states and thus improved precision in the computed WCET?
+Have you observed an increase in the execution time for performing
+this computation when modeling more complex architecture, that could
+be the trade-off?
+
+I would be interested to see you model using several cores leading to
+variability in timing access to memories and thus increased number of
+states.
+
+Some typos:
+- section 5.1: "wheter the instruction is a memory" -> whether (2nd
+paragraph)
+- table 1: "is predict" -> predicted
+- section 6: "complexe" -> complex
+

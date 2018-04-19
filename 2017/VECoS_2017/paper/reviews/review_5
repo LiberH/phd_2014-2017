@@ -1,0 +1,22 @@
+----------------------- REVIEW 5 ---------------------
+PAPER: 42
+TITLE: WCET analysis by Model Checking for a processor with dynamic branch prediction
+AUTHORS: Armel Mangean, Jean-Luc Béchennec, Mikaël Briday and Sébastien Faucou
+
+Overall evaluation: 1 (weak accept)
+
+----------- Overall evaluation -----------
+The paper considers WCET analysis of pipelined processors with dynamic
+branch and target prediction. The authors show how to solve the
+problem using model checking.
+
+For this, they represent the program using a model that has 2 parts:
+an array of data structures that is given to the model of the pipeline
+to mimic the timing behavior, and an automaton to mimic the
+functionnal behavior. The authors give then this model to the tool
+UPPAAL which outputs the following information for each model: the
+number of states explored, the CPU time used, and the memory used.
+
+The experimental results show that the approach is promising. Thus, I
+think the paper can be accepted.
+

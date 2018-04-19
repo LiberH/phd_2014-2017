@@ -1,0 +1,39 @@
+\documentclass[a4paper,USenglish]{src/llncs}
+\usepackage{adjustbox}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multirow}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{subfig}
+\usepackage[inline,shortlabels]{enumitem}
+
+\usetikzlibrary{arrows,automata}
+
+\title{WCET analysis by Model Checking\\ for a processor with dynamic branch prediction} % TODO: fix
+
+\input{src/authors}
+\begin{document}
+
+\maketitle
+
+% NOTE: 15 pages max.
+% TODO: check branch prediction outcomes table
+
+\input{src/abstract}
+\input{src/introduction}
+\input{src/relatedworks}
+\input{src/architecture}
+\input{src/overview}
+\input{src/model}
+\input{src/results}
+\input{src/conclusion}
+
+\appendix
+\bibliographystyle{src/splncs03}
+\bibliography{src/refs}
+
+\end{document}

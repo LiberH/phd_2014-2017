@@ -1,0 +1,124 @@
+\section{Description of the target microarchitecture}
+\label{sec:architecture}
+
+Our target microarchitecture is inspired by the Qorivva MPC5643L microcontroller~\cite{mpc5643lrefMan}.
+It is a dual-core developed for safety critical applications of the automotive domain.
+The architecture is based on two e200z4 Power cores~\cite{e200z4Man}. 
+The e200z4 core is a 32-bits processor of the Power family, based on the PowerPC instruction set.
+In this paper, we focus on the model of one core.
+%The processor can be configured either in lock-step mode (each core executes the same code, a dedicated hardware compare outputs of the execution) or in decoupled mode for maximizing performances. 
+
+%It can execute both 32-bits PowerPC instructions and 16-bits \emph{Variable Length Extension} (VLE) instructions that improves the code density.
+
+%le cache => j'ai pas parlé de la MMU…
+%pas grave pour la MMU (jlb)
+\subsection{Memory hierarchy}
+\label{sec:architecture:memory}
+
+The Qorivva SoC classically embeds internal (S)RAM and flash. 
+The RAM uses a 32-bit data bus and no data cache is available on the e200z4 core. 
+The flash stores the program instructions and is connected to the ICache using the AHB interface\footnote{The Advanced High-performance Bus is part of the open standard ARM-AMBA on-chip interconnect specification.}. It supports 64-bit data bus for instruction fetch and 32-bit data bus for CPU loads and DMA access. 
+%Sequential access to memory can benefit from a burst mode,  
+A burst mode allows to  fill cache lines faster by sending only the start address to the flash memory controller and get the data flow of sequential access to memory, instead of reading one 64-bit value at a time and then requesting the data at the following address and so on.
+
+The ICache size is 4Kbyte with 32 bytes lines. 
+It can be configured either has a 2- (64 sets) or 4-ways (32 sets) associative cache. 
+The replacement policy is pseudo round-robin. 
+A global register shared among sets points to the next way to replace. 
+The register is incremented for each cache miss % Sauf si la ligne est vide (début d'execution). Je ne sais pas si le détail est nécessaire.
+modulo the number of ways.
+%The associativity is not intended to be modified out of the setup phase. 
+%The cache is virtually indexed and physically tagged.
+
+%So the first cache line to replace will be on the first way, the second on the second way and so on, whatever the set is.
+
+The cache is non-blocking so that the execution continues during a cache miss. 
+On a cache miss, four 64-bits memory accesses % Détail : 4 double mots = 8 instructions. Nécessaire ?
+ are required to fill a cache line. 
+These accesses are done starting with the required instruction to decrease access latency. 
+A line fill buffer stores the memory words retrieved from the memory and the cache line is updated as soon as the line fill buffer load completes. 
+Moreover, a hit under fill feature is implemented to check the line fill buffer instead of waiting for the cache line update.
+
+
+
+\subsection{Execution pipeline and instruction prefetch buffer}
+\label{sec:architecture:pipeline}
+
+%le pipeline
+The e200z4 is a 2-issue static scheduling superscalar core. 
+Instructions are executed on a 5-stage pipeline. 
+The \emph{fetch stage} gets the instruction code from the cache using a 64-bits memory bus.
+It can retrieve up to two 32-bits instructions to feed them to the decode stage.
+Fetched instructions are stored in a 32 bytes instruction buffer (8 32-bits instructions). 
+When an instruction enters the fetch stage, the program counter (PC) is updated with the address of the next instruction to fetch.
+If the instruction is a branch, a BTB lookup is performed. 
+In case of a hit, dynamic branch prediction applies (see below).
+If the prediction is to take the branch, PC gets the predicted target.
+Otherwise, PC gets the next address in sequence.
+
+%A dynamic branch prediction unit is used by branch instructions during this stage. % Le BTB est mis à jour à EXECUTE et est utilisé pour la prédiction dans la "Fetch Unit" (pas ici). 
+
+The \emph{decode stage} decodes up to two instructions from the instruction buffer, determine instructions requirements and check register dependencies\footnote{In the case where the instruction in the decode stage requires a result produced by an instruction ahead in the pipeline, bubbles are inserted until the availability of the result. This is a data hazard. Bypasses are used between stages to propagate results and limits these bubbles.}. 
+In the case of a branch instruction, if it was not found in the BTB when entering the fetch stage, static prediction policy is applied.
+If the prediction is to take the branch, then the lower stages of the pipeline, including the instruction buffer, are flushed and PC is updated to the target of the branch.
+The instruction buffer will be refilled either at the next pipeline stall caused by a data or structural hazard (lack of hardware resources)
+%\textcolor{red}{NOTE: il faut dire que les prédictions statiques sont faite à ce stage (decode)}
+
+The next two stages are either the \emph{execute stages} or \emph{data memory accesses stages}. 
+In the case of a branch instruction, the actual outcome of the branch is resolved here.
+According to the match between the prediction and the actual outcome, the BTB and PC are updated.
+If the prediction was incorrect, the lower stages of the pipeline, including the instruction fetch buffer, are flushed and PC is updated to the correct address.
+This is an in-order execution and the last stage is the \emph{write back stage} to update registers.
+ 
+%\textcolor{red}{\bf NOTE: Les différences entre le pipeline de l'e200z4 et notre modèle de pipeline sont précisées en introduction. Faut-il les rappeler ici ou en section 5.4 (modélisation du pipeline) ou nul part ?}
+
+\subsection{Branch prediction}
+\label{sec:architecture:dybrpred}
+
+%\textcolor{red}{NOTE: ici on ne parle que de \textit{\textbf{dynamic} branch prediction}. Soit il faut change le titre de la sous-section soit ajouter un paragraphe sur les prédictions statiques.}
+
+%BTB
+The branch unit integrates a fully associative 8-entry BTB. 
+The branch unit mixes static and dynamic prediction. 
+Static prediction is used when the branch is not known, \textsl{i.e.} not allocated in the BTB. 
+It can be configured to use either the \emph{always not taken} (AN) policy, or the \emph{backward taken forward not taken} (BTFN) policy presented in section~\ref{sec:bpbasis}.
+Dynamic prediction uses a 2-bit saturating counter.
+Thus each entry of the BTB contains a tag (the full address of the branch instruction), a 2-bit saturating counter and the target address. 
+In the case of a BTB miss, if the branch is resolved as taken, it is allocated in the BTB using a FIFO replacement policy and its counter is initialized to \emph{weakly taken}. 
+Its target address is also stored.
+
+%In the case of a correct prediction, a branch taken and a BTB hit, no cycle is lost. 
+%Three cycles may be lost in the worst case (BTB miss, predict taken but with an incorrect prediction and an empty instruction buffer).
+
+The reference manual of the e200z4 core does not provide information on the prediction of computed branches, \textsl{i.e.} branches for which the target is computed at runtime.
+This is typically the case of function return, switch statement, or function pointer.
+In this paper, we consider that these branches are handled in the same way as the other ones.
+According to this interpretation, for these branches, the branch prediction can be correct and at the same time the target prediction incorrect because the BTB stores the last target address of the branch.
+
+All in all, there are 9 different outcomes for this branch prediction mechanism. 
+They are summarized in table~\ref{tab:branch_prediction_outcomes}.
+Notice that in case of misprediction, the instruction buffer has to be flushed.
+In this case, a memory access is triggered to refill this buffer.
+In turn, this access can add extra latency when the target instruction is not already in the ICache.
+
+\begin{table}
+    \centering
+    \caption{The 9 different cases of branch prediction. The given penalties are lower bound corresponding to the case where all involved instructions are already in the ICache. $^+$: this case triggers a flush of the instruction buffer because the branch is predicted taken in the decode stage. $^*$: this case triggers a flush of the instruction buffer because of misprediction detected in the execute stage. }
+    \label{tab:branch_prediction_outcomes}
+    \vspace{1em}
+    \input{src/branch_prediction_outcomes_tab}
+\end{table}
+
+%\textcolor{red}{NOTE: il n'a pas été évoqué jusque là le mécanisme de flush en cas de mauvaise prédiction, notamment de flush du buffer d'instruction.}
+
+%The impact of dynamic branch prediction on execution times is investigated in~\cite{Engblom2003}.
+%The authors stresses the needs for taking into account dynamic branch prediction for tight and sound WCET estimation.
+
+\subsection{Analyzability and predictability}
+
+The main challenge concerning the WCET analysis of this architecture lays in the complex interactions between the ICache, the branch prediction unit, and the instruction prefetch buffer.
+To compute a safe and tight bound on the WCET, an integrated analysis of these 3 units is required.
+Indeed, only an integrated analysis allows to compute the actual sequence of memory accesses requests and pipeline stall states produced by a given run of the program.
+
+
+%\textcolor{red}{\bf TODO}

@@ -1,0 +1,46 @@
+----------------------- REVIEW 4 ---------------------
+PAPER: 42
+TITLE: WCET analysis by Model Checking for a processor with dynamic branch prediction
+AUTHORS: Armel Mangean, Jean-Luc Béchennec, Mikaël Briday and Sébastien Faucou
+
+Overall evaluation: 2 (accept)
+
+----------- Overall evaluation -----------
+The authors consider the problem of model-checking-based derivation of
+worst-case execution time for programs running on a realistic platform
+involving an instruction cache, dynamic branch prediction, a branch
+target buffer and a 5 stage pipeline.
+
+The authors build on their previous work that combines slicing for
+binary code combined with an encoding of the remaining program and
+its interaction with the underlying platform using networks of timed 
+automata. The resulting networks are ultimately analysed with UPPAAL.
+
+The contribution of the work consists in taking into account the
+dynamic branch prediction and its interaction with the branch target
+buffer and the pipeline.
+
+The few described models seem reasonable and it is difficult to judge
+of the correctness of the details although the slicing tool and the
+encoding scripts are available as open source.
+
+This is solid and ambitious work and deserves acceptance.
+
+* It would be relevant to include in the table with the examples'
+descriptions the number of (branch/memory/arithmetic) instructions.
+
+* The results presented in table 3 would be easier to parse if they
+were represented graphically.
+
+More general:
+
+* I wonder if the authors did validate their results experimentally?
+
+> For instance, it would be interesting to use the approach to detect
+> rare scenarios where the rare inputs would generate many cache
+> misses leading to a worst time that is much higher than the one
+> obtained with "random" testing?
+
+* A comparison to the results obtained via static analysis techniques
+would be valuable on these benchmarks.
+

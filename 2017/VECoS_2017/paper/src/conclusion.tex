@@ -1,0 +1,16 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+%Using model checking for WCET analysis has been debated.
+In this paper we show that model checking can be used to analyze the complex interactions between the components of a microarchitecture used in safety critical embedded control systems.
+We focus on the interaction between the instruction cache, the branch prediction unit, and a pipeline with an instruction buffer.
+Model checking provides a solution to perform an integrated analysis of the whole system.
+This integrated analysis allows to explore only feasible traces of the system and to compute the actual sequence of memory access requests and pipeline stall states corresponding to each trace.
+Our result are promising concerning the scalability of the approach for such systems.
+
+In future works, we shall extend our analysis framework to support programs
+that use the stack to store data that impact the control flow. We also want to
+produce results using more complex benchmarks, and explore the impact of non-determinism concerning the initial state of the micro-architecture (eg. cache and BTB state).
+We will also tend toward having a model aligned with the actual e200z4 core (\textsl{i.e.} adding a second way to the pipeline) in order to validate our model against a real system through microbenchmarks.
+Our long term objective is to model and analyze a multiprocessor architecture based on e200z4 core such as the MPC5643L.
+

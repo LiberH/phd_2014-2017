@@ -1,0 +1,16 @@
+----------------------- REVIEW 2 ---------------------
+PAPER: 42
+TITLE: WCET analysis by Model Checking for a processor with dynamic branch prediction
+AUTHORS: Armel Mangean, Jean-Luc Béchennec, Mikaël Briday and Sébastien Faucou
+
+Overall evaluation: 3 (strong accept)
+
+----------- Overall evaluation -----------
+The authors present a new result for WCET, i.e. applying model
+checking for a processor with dynamic branch prediction. pipelines are
+formally modelled in Uppaal and its value is validated using the
+Malardalen benchmarks.
+
+The paper is easy to read, well written. The results are significant
+and relevant
+

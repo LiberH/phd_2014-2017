@@ -1,0 +1,53 @@
+----------------------- REVIEW 3 ---------------------
+PAPER: 42
+TITLE: WCET analysis by Model Checking for a processor with dynamic branch prediction
+AUTHORS: Armel Mangean, Jean-Luc Béchennec, Mikaël Briday and Sébastien Faucou
+
+Overall evaluation: 2 (accept)
+
+----------- Overall evaluation -----------
+This paper shows how model-checking techniques can be used to evaluate
+the worst-case execution time (WCET) of programs on a pipelined
+processor with instruction cache, dynamic branch-prediction unit and
+instruction prefetch buffer. 
+
+This paper is very clearly written and presented. The authors rightly
+argue at the crucial importance of determining WCET, particularly for
+embedded systems, and how model-checking allows an exhaustive
+evaluation of feasible execution paths.
+
+The paper manages neatly to keep a good balance between hardware
+architecture details and modeling choices. However, it would have been
+nice to have more explicit definitions of the states (information
+content) and transition of the model.
+
+The experimental results shows that the authors' method is indeed
+appropriate, even if one would had expected a bit more.
+
+> One wonders, for instance, how the authors results compare to those
+> that could be obtained either by simulation or by a worst-case
+> static analysis.
+
+Even if simulation cannot assure that all cases are covered, it could,
+in practice, allows to essentially compute the same WCET bounds.
+Similarly, static analysis could give an upper bound not that far from
+the exact calculation done by the authors. Furthermore, in their
+results, execution time is always very short. One wonders what the
+main complexity factor is and why there is no case with longer running
+time.
+
+As more specific comments, on page 3, it would be good to explain, wrt
+to fig 1, when exactly the branch is taken. Also, in relation to
+program slicing p.4, it seems strange that the authors justify slicing
+by scalability, when the execution time in the experimental section is
+always very short.
+
+In the bibliography wcet, mc, ilp have to be capitalized.
+
+> Finally, it is surprising that the authors didn't make a better use
+> of non-determinism, for instance in abstracting away details of the
+> dynamic branch prediction algorithm.
+
+Nevertheless, overall this is a very good paper that fits very well in
+VECoS's topics.
+
