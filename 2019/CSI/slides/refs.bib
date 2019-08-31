@@ -1,0 +1,207 @@
+%%% - Calcul de WCET - %%%
+%% À base d'AI et ILP
+
+@article{Tip95,
+	Author = {Tip, Frank},
+	Journal = {Journal of programming languages},
+	Number = {3},
+	Pages = {121--189},
+	Title = {{A Survey of Program Slicing Techniques}},
+	Volume = {3},
+	Year = {1995}}
+
+
+% AbsInt
+@inproceedings{HF04,
+  author       = {Heckmann, Reinhold and Ferdinand, Christian},
+  title        = {Worst-case execution time prediction by static program
+                  analysis},
+  booktitle    = {In 18th International Parallel and Distributed Processing
+                  Symposium (IPDPS 2004, pages 26--30. IEEE Computer Society},
+  year         = {2004}
+}
+
+% IPET
+@inproceedings{LM95,
+  title        = {Performance analysis of embedded software using implicit path
+                  enumeration},
+  author       = {Li, Yau-Tsun Steven and Malik, Sharad},
+  booktitle    = {ACM SIGPLAN Notices},
+  volume       = {30},
+  number       = {11},
+  pages        = {88--98},
+  year         = {1995},
+  organization = {ACM},
+}
+
+% OTAWA
+@incollection{BCR10,
+  author       = {Ballabriga, Clément and Cassé, Hugues and Rochange, Christine
+                  and Sainrat, Pascal},
+  title        = {{OTAWA: An Open Toolbox for Adaptive Wcet Analysis}},
+  booktitle    = {Software Technologies for Embedded and Ubiquitous Systems -
+                  8th {IFIP} {WG} 10.2 International Workshop, {SEUS} 2010,
+                  Waidhofen/Ybbs, Austria, October 13-15, 2010. Proceedings},
+  pages        = {35--46},
+  year         = {2010},
+  publisher    = {Springer},
+}
+
+% AI + MC
+@inproceedings{LYG10,
+  author       = {Lv, Mingsong and Yi, Wang and Guan, Nan and Yu, Ge},
+  title        = {{Combining Abstract Interpretation with Model Checking for
+                  Timing Analysis of Multicore Software}},
+  booktitle    = {Proceedings of the 31st {IEEE} Real-Time Systems Symposium,
+                  {RTSS} 2010, San Diego, California, USA, November 30 -
+                  December 3, 2010},
+  pages        = {339--349},
+  organization = {IEEE},
+  year         = {2010},
+}
+
+%% À base de MC temporisé
+
+@inproceedings{GBE10,
+	Author = {Jan Gustafsson and Adam Betts and Andreas Ermedahl and Bj{\"{o}}rn Lisper},
+	Booktitle = {International Workshop on Worst-Case Execution Time Analysis (WCET)},
+	Title = {The {M{\"a}lardalen} {WCET} Benchmarks -- Past, Present and Future},
+	Year = {2010}}
+
+@inproceedings{Agr94,
+  title        = {On slicing programs with jump statements},
+    author       = {Agrawal, Hiralal},
+      booktitle    = {ACM Sigplan Notices},
+        volume       = {29},
+	  number       = {6},
+	    pages        = {302--312},
+	      year         = {1994},
+	        organization = {ACM},
+		}
+
+% METAMOC
+@inproceedings{DOT10,
+  author       = {Dalsgaard, Andreas E. and Olesen, Mads C. and Toft, Martin and
+                  Hansen, René R. and Larsen, Kim G.},
+  title        = {{METAMOC: Modular Execution Time Analysis using Model
+                  Checking}},
+  booktitle    = {10th International Workshop on Worst-Case Execution Time
+                  Analysis, {WCET} 2010, July 6, 2010, Brussels, Belgium},
+  pages        = {113--123},
+  year         = {2010},
+}
+
+% Cassez et Béchennec
+@inproceedings{CB13,
+  title        = {{Timing Analysis of Binary Programs with UPPAAL}},
+  author       = {Cassez, Franck and Bechennec, Jean-Luc},
+  booktitle    = {2013 13th International Conference on Application of
+                  Concurrency to System Design (ACSD)},
+  pages        = {41--50},
+  year         = {2013},
+  organization = {IEEE}
+}
+
+
+
+%%% - Modèle logiciel - %%%
+%% Reconstruction de CFG
+
+% Insight
+@inproceedings{FLP15,
+  author       = {Emmanuel Fleury and Olivier Ly and G{\'{e}}rald Point and
+                  Aymeric Vincent},
+  title        = {{Insight: An Open Binary Analysis Framework}},
+  booktitle    = {Tools and Algorithms for the Construction and Analysis of
+                  Systems - 21st International Conference, {TACAS} 2015, Held as
+                  Part of the European Joint Conferences on Theory and Practice
+                  of Software, {ETAPS} 2015, London, UK, April 11-18,
+                  2015. Proceedings},
+  pages        = {218--224},
+  year         = {2015},
+}
+
+% Theiling CFG
+@inproceedings{The00,
+  author       = {Henrik Theiling},
+  title        = {{Extracting Safe and Precise Control Flow from Binaries}},
+  booktitle    = {7th International Workshop on Real-Time Computing and
+                  Applications Symposium {(RTCSA} 2000), 12-14 December 2000,
+                  Cheju Island, South Korea},
+  pages        = {23--30},
+  year         = {2000},
+}
+
+%% Réduction de CFG
+
+% Program Slicing
+@inproceedings{Wei81,
+  author       = {Weiser, Mark},
+  title        = {{Program Slicing}},
+  booktitle    = {Proceedings of the 5th international conference on Software
+                  engineering},
+  pages        = {439--449},
+  year         = {1981},
+  organization = {IEEE Press}
+}
+
+% Intraprocedural slicing (of binary executables)
+@inproceedings{CF97,
+  author       = {Cifuentes, Cristina and Fraboulet, Antoine},
+  title        = {{Intraprocedural Static Slicing of Binary Executables}},
+  booktitle    = {Software Maintenance, 1997. Proceedings., International
+                  Conference on},
+  pages        = {188--195},
+  year         = {1997},
+  organization = {IEEE}
+}
+
+% Interprocedural slicing (of binary executables)
+@inproceedings{KJL03,
+  author       = {Kiss, Akos and J{\'a}sz, Judit and Lehotai, G{\'a}bor and
+                  Gyim{\'o}thy, Tibor},
+  title        = {{Interprocedural Static Slicing of Binary Executables}},
+  booktitle    = {Source Code Analysis and Manipulation,
+                  2003. Proceedings. Third IEEE International Workshop on},
+  pages        = {118--127},
+  year         = {2003},
+  organization = {IEEE}
+}
+
+
+
+%%% - Développement d'un outil - %%%
+%% Conception
+
+% Harmless
+@article{KBB12,
+  author       = {Kassem, Rola and Briday, Mikaël and Béchennec, Jean-Luc and
+                  Savaton, Guillaume and Trinquet, Yvon},
+  title        = {Harmless, a Hardware Architecture Description Language
+                  Dedicated to Real-Time Embedded System Simulation},
+  journal      = {Journal of Systems Architecture},
+  volume       = {58},
+  number       = {8},
+  pages        = {318-337},
+  year         = {2012},
+  month        = sep,
+}
+
+% C++
+@book{Str86,
+  title        = {The C++ programming language},
+  author       = {Stroustrup, Bjarne},
+  year         = {1986},
+  publisher    = {Pearson Education India}
+}
+
+% LEMON
+@article{DJK11,
+  Author       = {Dezs{\H{o}}, Bal{\'a}zs and J{\"u}ttner, Alp{\'a}r and Kov{\'a}cs, P{\'e}ter},
+  Journal      = {ENTCS},
+  Number       = {5},
+  Pages        = {23--45},
+  Title        = {{LEMON -- an Open Source C++ Graph Template Library}},
+  Volume       = {264},
+  Year         = {2011}
+}

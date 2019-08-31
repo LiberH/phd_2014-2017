@@ -1,0 +1,46 @@
+
+\documentclass{article}
+%\bibliographystyle{plain}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
+\usepackage{lmodern}
+%\usepackage{microtype}
+%\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[symbol]{footmisc}
+\usepackage{pdfpages}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\title{%
+  Rapport de Comité de Suivi Individuel \\
+  {\bf Analyse temporelle des systèmes temps-réel %multi-c{\oe}urs
+    par vérification de modèles temporisés}}
+
+\author{Armel Mangean}
+\date{Février 2019}
+
+\begin{document}
+  \maketitle
+  %\tableofcontents
+
+  \input{intro}
+  \input{timeline}
+  \input{done}
+  \input{to-do}
+
+  %\nocite{*}
+  %\bibliography{refs.bib}
+
+  \appendix
+  \section*{Annexes}
+  \subsection*{Article publié à VECoS 2017}
+  \emph{(cf. page suivante)}
+  \vfill
+
+  \includepdf[page=1-,frame, scale=.9]{img/vecos17.pdf}
+
+\end{document}
+
